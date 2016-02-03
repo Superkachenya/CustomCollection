@@ -27,9 +27,7 @@
 {
   self = [super init];
   if (self) {
-    
     _maxCapacity = capacity;
-    
   }
   return self;
 }
@@ -37,9 +35,17 @@
 #pragma mark - push methods
 - (void)pushBack:(id)object
 {
+  if (_count > _maxCapacity) {
+    NSLog(@"ALARMA!!! You're beyond bounds");
+  }
+  
   _count++;
 }
 - (void)pushFront:(id)object {
+  
+  if (_count > _maxCapacity) {
+    NSLog(@"ALARMA!!! You're beyond bounds");
+  }
   
   _count++;
 }
