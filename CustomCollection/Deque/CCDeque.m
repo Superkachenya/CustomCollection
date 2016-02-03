@@ -35,20 +35,19 @@
 #pragma mark - push methods
 - (void)pushBack:(id)object
 {
-  if (self.count > self.maxCapacity) {
+  if (self.count >= self.maxCapacity) {
     NSLog(@"ALARMA!!! You're beyond bounds");
-    return;
+  } else {
+    _count++;
   }
-  
-  _count++;
 }
 - (void)pushFront:(id)object {
   
-  if (self.count > self.maxCapacity) {
+  if (self.count >= self.maxCapacity) {
     NSLog(@"ALARMA!!! You're beyond bounds");
-    return;
+  } else {
+    _count++;
   }
-  _count++;
 }
 
 #pragma mark - pop methods
