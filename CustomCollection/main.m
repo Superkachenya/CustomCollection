@@ -16,12 +16,17 @@ int main(int argc, const char * argv[]) {
     CCDeque *testDeque = [[CCDeque alloc] initWithCapacity:12];
     
     NSNumber *testObj = @2;
+    NSString *testObj2 = @"Super String";
+    
     
     
     [testDeque pushFront:testObj];
+    [testDeque pushBack:testObj2];
     
     
     NSLog(@"%@", [testDeque peakHeadObject]);
+    NSLog(@"%@", [testDeque peakTaleObject]);
+
   }
   return 0;
 }

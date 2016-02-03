@@ -88,7 +88,9 @@
 
 - (id) peakTaleObject {
   
-  return nil;
-}
+  if((self.taleNode.valueOfObject == nil)) {
+    NSLog(@"There's no elements in deque");
+  }
+  return self.taleNode.valueOfObject;}
 
 @end
