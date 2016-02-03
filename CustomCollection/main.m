@@ -8,11 +8,18 @@
 
 #import <Foundation/Foundation.h>
 #import "CCDeque.h"
+#import "CCNode.h"
 
 int main(int argc, const char * argv[]) {
   @autoreleasepool {
     
-    CCDeque *testInstance = [[CCDeque alloc] initWithCapacity:12];
+    CCDeque *testInstance = [[CCDeque alloc] initWithCapacity:10];
+    CCNode *testNode = [CCNode new];
+    
+    for (int i = 0; i<=13; i++) {
+    
+    [testInstance pushFront:testNode];
+    }
     
     NSLog(@"%li", (long)testInstance.count);
   }
