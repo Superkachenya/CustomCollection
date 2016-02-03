@@ -7,11 +7,14 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "CCDeque.h"
 
 int main(int argc, const char * argv[]) {
-    @autoreleasepool {
-        // insert code here...
-        NSLog(@"Hello, World!");
-    }
-    return 0;
+  @autoreleasepool {
+    
+    CCDeque *testInstance = [[CCDeque alloc] initWithCapacity:12];
+    
+    NSLog(@"%li", (long)testInstance.count);
+  }
+  return 0;
 }

@@ -8,6 +8,50 @@
 
 #import "CCDeque.h"
 
+@interface CCDeque ()
+
+@property (nonatomic) NSUInteger maxCapacity;
+
+@end
+
 @implementation CCDeque
+
+
+#pragma mark - initializers
+- (instancetype)init
+{
+  return nil;
+}
+
+- (instancetype)initWithCapacity:(NSInteger)capacity
+{
+  self = [super init];
+  if (self) {
+    
+    _maxCapacity = capacity;
+    
+  }
+  return self;
+}
+
+#pragma mark - push methods
+- (void)pushBack:(id)object
+{
+  _count++;
+}
+- (void)pushFront:(id)object {
+  
+  _count++;
+}
+
+#pragma mark - pop methods
+- (void)popBack:(id)object
+{
+  _count --;
+}
+- (void)popFront:(id)object
+{
+  _count--;
+}
 
 @end

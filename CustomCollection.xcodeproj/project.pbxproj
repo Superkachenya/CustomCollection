@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		8E56FB901C622ED800C16A7F /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E56FB8F1C622ED800C16A7F /* main.m */; };
 		8E56FB981C622F3D00C16A7F /* CCDeque.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E56FB971C622F3D00C16A7F /* CCDeque.m */; };
+		8E56FB9C1C62520A00C16A7F /* CCNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E56FB9B1C62520A00C16A7F /* CCNode.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -28,6 +29,8 @@
 		8E56FB8F1C622ED800C16A7F /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		8E56FB961C622F3D00C16A7F /* CCDeque.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CCDeque.h; path = Deque/CCDeque.h; sourceTree = "<group>"; };
 		8E56FB971C622F3D00C16A7F /* CCDeque.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CCDeque.m; path = Deque/CCDeque.m; sourceTree = "<group>"; };
+		8E56FB9A1C62520A00C16A7F /* CCNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CCNode.h; path = Node/CCNode.h; sourceTree = "<group>"; };
+		8E56FB9B1C62520A00C16A7F /* CCNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CCNode.m; path = Node/CCNode.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -61,6 +64,7 @@
 			isa = PBXGroup;
 			children = (
 				8E56FB8F1C622ED800C16A7F /* main.m */,
+				8E56FB9D1C62520E00C16A7F /* Node */,
 				8E56FB991C622F4500C16A7F /* Deque */,
 			);
 			path = CustomCollection;
@@ -73,6 +77,15 @@
 				8E56FB971C622F3D00C16A7F /* CCDeque.m */,
 			);
 			name = Deque;
+			sourceTree = "<group>";
+		};
+		8E56FB9D1C62520E00C16A7F /* Node */ = {
+			isa = PBXGroup;
+			children = (
+				8E56FB9A1C62520A00C16A7F /* CCNode.h */,
+				8E56FB9B1C62520A00C16A7F /* CCNode.m */,
+			);
+			name = Node;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -133,6 +146,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8E56FB981C622F3D00C16A7F /* CCDeque.m in Sources */,
+				8E56FB9C1C62520A00C16A7F /* CCNode.m in Sources */,
 				8E56FB901C622ED800C16A7F /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -252,6 +266,7 @@
 				8E56FB951C622ED800C16A7F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
