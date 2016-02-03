@@ -7,10 +7,18 @@
 //
 
 #import "CCDeque.h"
+#import "CCNode.h"
 
 @interface CCDeque ()
 
 @property (nonatomic) NSUInteger maxCapacity;
+
+@property (nonatomic) CCNode *headNode;
+@property (nonatomic) CCNode *taleNode;
+
+
+@property (nonatomic, readwrite) NSInteger count;
+
 
 @end
 
@@ -18,46 +26,69 @@
 
 
 #pragma mark - initializers
-- (instancetype)init
-{
+- (instancetype)init {
   return nil;
 }
 
-- (instancetype)initWithCapacity:(NSInteger)capacity
-{
+- (instancetype)initWithCapacity:(NSInteger)capacity {
   self = [super init];
+  
   if (self) {
-    _maxCapacity = capacity;
+    self.maxCapacity = capacity;
   }
   return self;
 }
 
 #pragma mark - push methods
-- (void)pushBack:(id)object
-{
+- (void)pushBack:(id)object {
+  
   if (self.count >= self.maxCapacity) {
     NSLog(@"ALARMA!!! You're beyond bounds");
   } else {
-    _count++;
+    
+    self.taleNode = [CCNode new];
+    self.taleNode.valueOfObject = object;
+    self.count++;
   }
 }
+
 - (void)pushFront:(id)object {
   
   if (self.count >= self.maxCapacity) {
     NSLog(@"ALARMA!!! You're beyond bounds");
   } else {
-    _count++;
+    
+    self.headNode = [CCNode new];
+    self.headNode.valueOfObject = object;
+    self.count++;
   }
 }
 
 #pragma mark - pop methods
-- (void)popBack:(id)object
-{
-  _count --;
+- (id)popBack:(id)object {
+  
+  self.count--;
+  return object;
 }
-- (void)popFront:(id)object
-{
-  _count--;
+
+- (id)popFront:(id)object {
+  
+  self.count--;
+  return object;
+}
+
+#pragma mark - peak methods
+- (id) peakHeadObject {
+  
+  if((self.headNode.valueOfObject == nil)) {
+    NSLog(@"There's no elements in deque");
+  }
+  return self.headNode.valueOfObject;
+}
+
+- (id) peakTaleObject {
+  
+  return nil;
 }
 
 @end

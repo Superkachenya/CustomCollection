@@ -11,8 +11,7 @@
 @interface CCDeque : NSObject
 
 @property (nonatomic, readonly) NSInteger count;
-@property (nonatomic, readonly) id peakFrontObject;
-@property (nonatomic, readonly) id peakBackObject;
+
 
 #pragma mark - required initializer
 - (instancetype)initWithCapacity:(NSInteger)capacity;
@@ -22,7 +21,11 @@
 - (void)pushFront:(id)object;
 
 #pragma mark - pop methods
-- (void)popBack:(id)object;
-- (void)popFront:(id)object;
+- (id)popBack:(id)object;
+- (id)popFront:(id)object;
+
+#pragma mark - peak methods
+- (id) peakHeadObject;
+- (id) peakTaleObject;
 
 @end

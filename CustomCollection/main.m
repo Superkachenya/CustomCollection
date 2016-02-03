@@ -13,15 +13,15 @@
 int main(int argc, const char * argv[]) {
   @autoreleasepool {
     
-    CCDeque *testInstance = [[CCDeque alloc] initWithCapacity:10];
-    CCNode *testNode = [CCNode new];
+    CCDeque *testDeque = [[CCDeque alloc] initWithCapacity:12];
     
-    for (int i = 0; i<=13; i++) {
+    NSNumber *testObj = @2;
     
-    [testInstance pushFront:testNode];
-    }
     
-    NSLog(@"%li", (long)testInstance.count);
+    [testDeque pushFront:testObj];
+    
+    
+    NSLog(@"%@", [testDeque peakHeadObject]);
   }
   return 0;
 }

@@ -10,8 +10,8 @@
 
 @interface CCNode : NSObject
 
-@property (nonatomic) id nextObject;
-@property (nonatomic) id previousObject;
+@property (nonatomic) CCNode *nextOfDeque;
+@property (nonatomic) CCNode *previousOfDeque;
 @property (nonatomic) id valueOfObject;
 
 @end
