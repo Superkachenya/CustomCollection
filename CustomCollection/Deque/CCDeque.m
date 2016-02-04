@@ -12,12 +12,10 @@
 @interface CCDeque ()
 
 @property (nonatomic) NSUInteger capacity;
+@property (nonatomic, readwrite) NSInteger count;
 
 @property (nonatomic) CCNode *headNode;
 @property (nonatomic) CCNode *tailNode;
-
-
-@property (nonatomic, readwrite) NSInteger count;
 
 
 @end
@@ -33,18 +31,15 @@
 
 - (instancetype)initWithCapacity:(NSInteger)capacity {
   self = [super init];
-  
   if (self) {
     self.capacity = capacity;
   }
-  
   return self;
 }
 
 #pragma mark - push methods
 
 - (void)pushFront:(id)object {
-  
   if (self.count >= self.capacity) {
     NSLog(@"ALARM!!! You're beyond bounds");
   } else {
@@ -52,14 +47,11 @@
     currentNode.object = object;
     currentNode.previousNode = self.headNode;
     self.headNode = currentNode;
-    
     self.count++;
-    
   }
 }
 
 - (void)pushBack:(id)object {
-  
   if (self.count >= self.capacity) {
     NSLog(@"ALARM!!! You're beyond bounds");
   } else {
@@ -67,9 +59,7 @@
     currentNode.object = object;
     currentNode.nextNode = self.tailNode;
     self.tailNode = currentNode;
-    
     self.count++;
-    
   }
 }
 
@@ -99,7 +89,6 @@
 #pragma mark - peak methods
 
 - (id) peakHeadObject {
-  
   if(!(self.count)) {
     NSLog(@"There's no elements in deque");
   }
@@ -107,7 +96,6 @@
 }
 
 - (id) peakTailObject {
-  
   if(!(self.count)) {
     NSLog(@"There's no elements in deque");
   }

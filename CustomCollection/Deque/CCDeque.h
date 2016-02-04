@@ -14,18 +14,22 @@
 
 
 #pragma mark - required initializer
+
 - (instancetype)initWithCapacity:(NSInteger)capacity;
 
 #pragma mark - push methods
+
 - (void)pushFront:(id)object;
 - (void)pushBack:(id)object;
 
 
 #pragma mark - pop methods
+
 - (id)popFront;
 - (id)popBack;
 
 #pragma mark - peak methods
+
 - (id) peakHeadObject;
 - (id) peakTailObject;
 
