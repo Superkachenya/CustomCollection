@@ -107,8 +107,10 @@ NSUInteger const kDefaultCapacity = 100;
 #pragma mark - NSCopying
 
 -(id)copyWithZone:(NSZone *)zone {
-  CCDeque *copy = [[self class] new];
-  
+  CCDeque *copy = [[[self class] allocWithZone:zone] initWithCapacity:self.capacity];
+  copy.headNode = self.headNode;
+  copy.tailNode = self.tailNode;
+  copy.count = self.count;
   return copy;
 }
 
