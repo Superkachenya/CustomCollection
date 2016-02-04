@@ -114,4 +114,14 @@ NSUInteger const kDefaultCapacity = 100;
   return copy;
 }
 
+#pragma mark - NSCoding
+
+-(instancetype)initWithCoder:(NSCoder *)aDecoder {
+  return nil;
+}
+
+-(void)encodeWithCoder:(NSCoder *)aCoder {
+  
+}
+
 @end
