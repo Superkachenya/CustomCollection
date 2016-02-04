@@ -10,6 +10,7 @@
 #import "CCNode.h"
 
 NSUInteger const kCCDequeDefaultCapacity = 100;
+NSUInteger const kCCDequeOneObject = 1;
 NSString *const kCCDequeHeadNodeKey = @"CCDequeHeadNodeKey";
 NSString *const kCCDequeTailNodeKey = @"CCDequeTailNodeKey";
 NSString *const kCCDequeCountKey = @"CCDequeCountKey";
@@ -32,105 +33,115 @@ NSString *const kCCDequeCountKey = @"CCDequeCountKey";
 #pragma mark - initializers
 
 - (instancetype)init {
-  return [self initWithCapacity:kCCDequeDefaultCapacity];
+    return [self initWithCapacity:kCCDequeDefaultCapacity];
 }
 
 - (instancetype)initWithCapacity:(NSInteger)capacity {
-  self = [super init];
-  if (self) {
-    self.capacity = capacity;
-  }
-  return self;
+    self = [super init];
+    if (self) {
+        self.capacity = capacity;
+    }
+    return self;
 }
 
 #pragma mark - push methods
 
 - (void)pushFront:(id)object {
-  if (self.count >= self.capacity) {
-    NSLog(@"ALARM!!! You're beyond bounds");
-  } else {
-    CCNode *currentNode = [CCNode new];
-    currentNode.object = object;
-    currentNode.previousNode = self.headNode;
-    self.headNode = currentNode;
-    self.count++;
-  }
+    if (self.count >= self.capacity) {
+        NSLog(@"ALARM!!! You're beyond bounds");
+    } else {
+        CCNode *currentNode = [CCNode new];
+        currentNode.object = object;
+        currentNode.previousNode = self.headNode;
+        self.headNode = currentNode;
+        if (!self.tailNode) {
+            self.tailNode = self.headNode;
+        }
+        self.count++;
+    }
 }
 
 - (void)pushBack:(id)object {
-  if (self.count >= self.capacity) {
-    NSLog(@"ALARM!!! You're beyond bounds");
-  } else {
-    CCNode *currentNode = [CCNode new];
-    currentNode.object = object;
-    currentNode.nextNode = self.tailNode;
-    self.tailNode = currentNode;
-    self.count++;
-  }
+    if (self.count >= self.capacity) {
+        NSLog(@"ALARM!!! You're beyond bounds");
+    } else {
+        CCNode *currentNode = [CCNode new];
+        currentNode.object = object;
+        currentNode.nextNode = self.tailNode;
+        self.tailNode = currentNode;
+        if (!self.headNode) {
+            self.headNode = self.tailNode;
+        }
+        self.count++;
+        
+    }
 }
-
-
-
 
 #pragma mark - pop methods
 
 - (id)popFront {
-  CCNode *currentNode = [CCNode new];
-  currentNode = self.headNode;
-  currentNode.object = self.headNode.object;
-  self.headNode = self.headNode.previousNode;
-  self.count--;
-  return currentNode.object;
+    CCNode *currentNode = [CCNode new];
+    currentNode = self.headNode;
+    currentNode.object = self.headNode.object;
+    self.headNode = self.headNode.previousNode;
+    if (!self.headNode) {
+        self.headNode = self.tailNode.nextNode;
+    }
+    self.count--;
+    return currentNode.object;
 }
 
 - (id)popBack {
-  CCNode *currentNode = [CCNode new];
-  currentNode.nextNode = self.tailNode;
-  currentNode.object = self.tailNode.object;
-  self.tailNode = self.tailNode.nextNode;
-  self.count--;
-  return currentNode.object;
+    CCNode *currentNode = [CCNode new];
+    currentNode.nextNode = self.tailNode;
+    currentNode.object = self.tailNode.object;
+    self.tailNode = self.tailNode.nextNode;
+    if (!self.tailNode) {
+        self.tailNode = self.headNode.previousNode;
+    }
+    self.count--;
+    return currentNode.object;
 }
 
 #pragma mark - peak methods
 
 - (id)peakHeadObject {
-  if(!(self.count)) {
-    NSLog(@"There's no elements in deque");
-  }
-  return self.headNode.object;
+    if(!self.headNode) {
+        NSLog(@"There's no elements in deque");
+    }
+    return self.headNode.object;
 }
 
 - (id)peakTailObject {
-  if(!(self.count)) {
-    NSLog(@"There's no elements in deque");
-  }
-  return self.tailNode.object;
+    if(!self.tailNode) {
+        NSLog(@"There's no elements in deque");
+    }
+    return self.tailNode.object;
 }
 
 #pragma mark - NSCopying
 
 - (id)copyWithZone:(NSZone *)zone {
-  CCDeque *copy = [[[self class] allocWithZone:zone] initWithCapacity:self.capacity];
-  copy.headNode = self.headNode;
-  copy.tailNode = self.tailNode;
-  copy.count = self.count;
-  return copy;
+    CCDeque *copy = [[[self class] allocWithZone:zone] initWithCapacity:self.capacity];
+    copy.headNode = self.headNode;
+    copy.tailNode = self.tailNode;
+    copy.count = self.count;
+    return copy;
 }
 
 #pragma mark - NSCoding
 
 - (void)encodeWithCoder:(NSCoder *)aCoder {
-  [aCoder encodeObject:self.headNode forKey:kCCDequeHeadNodeKey];
-  [aCoder encodeObject:self.tailNode forKey:kCCDequeTailNodeKey];
-  [aCoder encodeInt64:self.count forKey:kCCDequeCountKey];
+    [aCoder encodeObject:self.headNode forKey:kCCDequeHeadNodeKey];
+    [aCoder encodeObject:self.tailNode forKey:kCCDequeTailNodeKey];
+    [aCoder encodeInt64:self.count forKey:kCCDequeCountKey];
 }
 
 - (instancetype)initWithCoder:(NSCoder *)aDecoder {
-  self.headNode = [aDecoder decodeObjectForKey:kCCDequeHeadNodeKey];
-  self.tailNode = [aDecoder decodeObjectForKey:kCCDequeTailNodeKey];
-  self.count = [aDecoder decodeInt64ForKey:kCCDequeCountKey];
-  return self;
+    self.headNode = [aDecoder decodeObjectForKey:kCCDequeHeadNodeKey];
+    self.tailNode = [aDecoder decodeObjectForKey:kCCDequeTailNodeKey];
+    self.count = [aDecoder decodeInt64ForKey:kCCDequeCountKey];
+    return self;
 }
 
 @end
