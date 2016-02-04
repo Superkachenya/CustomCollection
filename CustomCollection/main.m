@@ -58,6 +58,15 @@ int main(int argc, const char * argv[]) {
     NSLog(@"%@ - tail", [testDeque peakTailObject]);
     
     
+    
+    if ([NSKeyedArchiver archiveRootObject: testDeque toFile:@"CCDeque.arch"] == NO) {
+      NSLog (@"archiving failed");
+    }
+    
+    CCDeque *archiveTest = [NSKeyedUnarchiver unarchiveObjectWithFile:@"CCDeque.arch"];
+    
+    NSLog(@"%@", [archiveTest peakHeadObject]);
+    
   }
   return 0;
 }
