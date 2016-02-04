@@ -9,6 +9,8 @@
 #import "CCDeque.h"
 #import "CCNode.h"
 
+NSUInteger const kDefaultCapacity = 100;
+
 @interface CCDeque ()
 
 @property (nonatomic) NSUInteger capacity;
@@ -26,7 +28,8 @@
 #pragma mark - initializers
 
 - (instancetype)init {
-  return nil;
+  self = [self initWithCapacity:kDefaultCapacity];
+  return self;
 }
 
 - (instancetype)initWithCapacity:(NSInteger)capacity {
@@ -104,7 +107,7 @@
 #pragma mark - NSCopying
 
 -(id)copyWithZone:(NSZone *)zone {
-  CCDeque *copy = self;
+  CCDeque *copy = [[self class] new];
   
   return copy;
 }

@@ -12,7 +12,6 @@
 
 @property (nonatomic, readonly) NSInteger count;
 
-
 #pragma mark - required initializer
 
 - (instancetype)initWithCapacity:(NSInteger)capacity;

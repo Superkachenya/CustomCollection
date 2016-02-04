@@ -19,6 +19,8 @@ int main(int argc, const char * argv[]) {
     NSNumber *testObj3 = @44;
     NSString *testObj4 = @"Hey Ho!";
     NSArray *testObj5 = @[@1, @2, @3, @4];
+    NSString *testObj6 = @"NEW String";
+    NSNumber *testObj7 = @67;
 
     [testDeque pushFront:testObj];
     [testDeque pushFront:testObj4];
@@ -26,10 +28,11 @@ int main(int argc, const char * argv[]) {
     [testDeque pushBack:testObj3];
     [testDeque pushBack:testObj5];
     
+    
     CCDeque *newDeque = [testDeque copy];
-    NSLog(@"%@ - NEWtail", [newDeque peakTailObject]);
     NSLog(@"%@ - NEWhead", [newDeque peakHeadObject]);
-
+    NSLog(@"%@ - NEWtail", [newDeque peakTailObject]);
+    
     NSLog(@"%li - count",(long)testDeque.count);
     
     NSLog(@"%@ - head", [testDeque peakHeadObject]);
@@ -43,12 +46,15 @@ int main(int argc, const char * argv[]) {
     
     NSLog(@"%li - count",(long)testDeque.count);
     
+    [newDeque pushFront:testObj6];
+    [newDeque pushBack:testObj7];
     
-    NSLog(@"%@ - NEWtail", [newDeque peakTailObject]);
     NSLog(@"%@ - NEWhead", [newDeque peakHeadObject]);
-
-
+    NSLog(@"%@ - NEWtail", [newDeque peakTailObject]);
     
+    NSLog(@"%@ - head", [testDeque peakHeadObject]);
+    NSLog(@"%@ - tail", [testDeque peakTailObject]);
+
     
   }
   return 0;
