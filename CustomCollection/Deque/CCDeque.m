@@ -48,14 +48,11 @@
   if (self.count >= self.capacity) {
     NSLog(@"ALARM!!! You're beyond bounds");
   } else {
-    if (!(self.headNode)) {
-      self.headNode = [CCNode new];
-      self.headNode.nextNode = nil;
-      self.headNode.previousNode = nil;
-      self.tailNode = self.headNode;
-    }
-    self.headNode.previousNode = self.tailNode;
-    self.headNode.object = object;
+    CCNode *currentNode = [CCNode new];
+    currentNode.object = object;
+    currentNode.previousNode = self.headNode;
+    self.headNode = currentNode;
+    
     self.count++;
     
   }
@@ -66,12 +63,16 @@
   if (self.count >= self.capacity) {
     NSLog(@"ALARM!!! You're beyond bounds");
   } else {
+    CCNode *currentNode = [CCNode new];
+    currentNode.object = object;
+    currentNode.nextNode = self.tailNode;
+    self.tailNode = currentNode;
     
-    self.tailNode = [CCNode new];
-    self.tailNode.object = object;
     self.count++;
+
   }
 }
+
 
 #pragma mark - pop methods
 

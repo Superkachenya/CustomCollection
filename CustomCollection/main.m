@@ -18,7 +18,9 @@ int main(int argc, const char * argv[]) {
     NSString *testObj2 = @"Super String";
     
     [testDeque pushFront:testObj];
-    [testDeque pushFront:testObj2];
+    [testDeque pushBack:testObj2];
+    [testDeque pushBack:testObj];
+
 
 //    [testDeque pushBack:testObj2];
 //    [testDeque pushBack:testObj2];
