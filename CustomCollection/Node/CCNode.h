@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface CCNode : NSObject
+@interface CCNode : NSObject <NSCopying, NSCoding>
 
 @property (nonatomic) CCNode *nextNode;
 @property (nonatomic) CCNode *previousNode;

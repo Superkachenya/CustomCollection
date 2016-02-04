@@ -120,6 +120,12 @@ NSString *const kCCDequeCountKey = @"CCDequeCountKey";
 
 #pragma mark - NSCoding
 
+- (void)encodeWithCoder:(NSCoder *)aCoder {
+  [aCoder encodeObject:self.headNode forKey:kCCDequeHeadNodeKey];
+  [aCoder encodeObject:self.tailNode forKey:kCCDequeTailNodeKey];
+  [aCoder encodeInt64:self.count forKey:kCCDequeCountKey];
+}
+
 - (instancetype)initWithCoder:(NSCoder *)aDecoder {
   self.headNode = [aDecoder decodeObjectForKey:kCCDequeHeadNodeKey];
   self.tailNode = [aDecoder decodeObjectForKey:kCCDequeTailNodeKey];
@@ -127,11 +133,7 @@ NSString *const kCCDequeCountKey = @"CCDequeCountKey";
   return self;
 }
 
-- (void)encodeWithCoder:(NSCoder *)aCoder {
-  [aCoder encodeObject:self.headNode forKey:kCCDequeHeadNodeKey];
-  [aCoder encodeObject:self.tailNode forKey:kCCDequeTailNodeKey];
-  [aCoder encodeInt64:self.count forKey:kCCDequeCountKey];
-}
+
 
 
 
