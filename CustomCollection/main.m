@@ -8,7 +8,6 @@
 
 #import <Foundation/Foundation.h>
 #import "CCDeque.h"
-#import "CCNode.h"
 
 int main(int argc, const char * argv[]) {
   @autoreleasepool {
@@ -18,14 +17,30 @@ int main(int argc, const char * argv[]) {
     NSNumber *testObj = @2;
     NSString *testObj2 = @"Super String";
     
-    
-    
     [testDeque pushFront:testObj];
-    [testDeque pushBack:testObj2];
+    [testDeque pushFront:testObj2];
+
+//    [testDeque pushBack:testObj2];
+//    [testDeque pushBack:testObj2];
+//    [testDeque pushBack:testObj2];
+//    [testDeque pushBack:testObj2];
+//    [testDeque pushBack:testObj2];
+//    [testDeque pushBack:testObj2];
+//    [testDeque pushBack:testObj2];
+//    [testDeque pushBack:testObj2];
+//    [testDeque pushBack:testObj2];
+//    [testDeque pushBack:testObj2];
+//    [testDeque pushBack:testObj2];
     
+
+
+
     
-    NSLog(@"%@", [testDeque peakHeadObject]);
-    NSLog(@"%@", [testDeque peakTaleObject]);
+    NSLog(@"%li - count",(long)testDeque.count);
+    NSLog(@"%@ - head", [testDeque peakHeadObject]);
+    NSLog(@"%@ - tail", [testDeque peakTailObject]);
+
+  //  NSLog(@"%@", [testDeque peakTailObject]);
 
   }
   return 0;

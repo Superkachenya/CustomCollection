@@ -17,15 +17,16 @@
 - (instancetype)initWithCapacity:(NSInteger)capacity;
 
 #pragma mark - push methods
-- (void)pushBack:(id)object;
 - (void)pushFront:(id)object;
+- (void)pushBack:(id)object;
+
 
 #pragma mark - pop methods
-- (id)popBack:(id)object;
-- (id)popFront:(id)object;
+- (id)popFront;
+- (id)popBack;
 
 #pragma mark - peak methods
 - (id) peakHeadObject;
-- (id) peakTaleObject;
+- (id) peakTailObject;
 
 @end

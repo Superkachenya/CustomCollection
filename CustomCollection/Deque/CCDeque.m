@@ -11,10 +11,10 @@
 
 @interface CCDeque ()
 
-@property (nonatomic) NSUInteger maxCapacity;
+@property (nonatomic) NSUInteger capacity;
 
 @property (nonatomic) CCNode *headNode;
-@property (nonatomic) CCNode *taleNode;
+@property (nonatomic) CCNode *tailNode;
 
 
 @property (nonatomic, readwrite) NSInteger count;
@@ -26,6 +26,7 @@
 
 
 #pragma mark - initializers
+
 - (instancetype)init {
   return nil;
 }
@@ -34,63 +35,73 @@
   self = [super init];
   
   if (self) {
-    self.maxCapacity = capacity;
+    self.capacity = capacity;
   }
+  
   return self;
 }
 
 #pragma mark - push methods
-- (void)pushBack:(id)object {
-  
-  if (self.count >= self.maxCapacity) {
-    NSLog(@"ALARMA!!! You're beyond bounds");
-  } else {
-    
-    self.taleNode = [CCNode new];
-    self.taleNode.valueOfObject = object;
-    self.count++;
-  }
-}
 
 - (void)pushFront:(id)object {
   
-  if (self.count >= self.maxCapacity) {
-    NSLog(@"ALARMA!!! You're beyond bounds");
+  if (self.count >= self.capacity) {
+    NSLog(@"ALARM!!! You're beyond bounds");
+  } else {
+    if (!(self.headNode)) {
+      self.headNode = [CCNode new];
+      self.headNode.nextNode = nil;
+      self.headNode.previousNode = nil;
+      self.tailNode = self.headNode;
+    }
+    self.headNode.previousNode = self.tailNode;
+    self.headNode.object = object;
+    self.count++;
+    
+  }
+}
+
+- (void)pushBack:(id)object {
+  
+  if (self.count >= self.capacity) {
+    NSLog(@"ALARM!!! You're beyond bounds");
   } else {
     
-    self.headNode = [CCNode new];
-    self.headNode.valueOfObject = object;
+    self.tailNode = [CCNode new];
+    self.tailNode.object = object;
     self.count++;
   }
 }
 
 #pragma mark - pop methods
-- (id)popBack:(id)object {
+
+- (id)popFront {
   
   self.count--;
-  return object;
+  return nil;
 }
 
-- (id)popFront:(id)object {
+- (id)popBack {
   
   self.count--;
-  return object;
+  return nil;
 }
 
 #pragma mark - peak methods
+
 - (id) peakHeadObject {
   
-  if((self.headNode.valueOfObject == nil)) {
+  if(!(self.headNode.object)) {
     NSLog(@"There's no elements in deque");
   }
-  return self.headNode.valueOfObject;
+  return self.headNode.object;
 }
 
-- (id) peakTaleObject {
+- (id) peakTailObject {
   
-  if((self.taleNode.valueOfObject == nil)) {
+  if((self.tailNode.object == nil)) {
     NSLog(@"There's no elements in deque");
   }
-  return self.taleNode.valueOfObject;}
+  return self.tailNode.object;}
 
 @end
