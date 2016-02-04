@@ -69,30 +69,38 @@
     self.tailNode = currentNode;
     
     self.count++;
-
+    
   }
 }
+
+
 
 
 #pragma mark - pop methods
 
 - (id)popFront {
-  
+  CCNode *currentNode = [CCNode new];
+  currentNode = self.headNode;
+  currentNode.object = self.headNode.object;
+  self.headNode = self.headNode.previousNode;
   self.count--;
-  return nil;
+  return currentNode.object;
 }
 
 - (id)popBack {
-  
+  CCNode *currentNode = [CCNode new];
+  currentNode.nextNode = self.tailNode;
+  currentNode.object = self.tailNode.object;
+  self.tailNode = self.tailNode.nextNode;
   self.count--;
-  return nil;
+  return currentNode.object;
 }
 
 #pragma mark - peak methods
 
 - (id) peakHeadObject {
   
-  if(!(self.headNode.object)) {
+  if(!(self.count)) {
     NSLog(@"There's no elements in deque");
   }
   return self.headNode.object;
@@ -100,7 +108,7 @@
 
 - (id) peakTailObject {
   
-  if((self.tailNode.object == nil)) {
+  if(!(self.count)) {
     NSLog(@"There's no elements in deque");
   }
   return self.tailNode.object;}
