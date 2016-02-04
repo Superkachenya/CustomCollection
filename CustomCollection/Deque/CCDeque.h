@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface CCDeque : NSObject
+@interface CCDeque : NSObject <NSCopying, NSCoding>
 
 @property (nonatomic, readonly) NSInteger count;
 

@@ -101,4 +101,12 @@
   }
   return self.tailNode.object;}
 
+#pragma mark - NSCopying
+
+-(id)copyWithZone:(NSZone *)zone {
+  CCDeque *copy = self;
+  
+  return copy;
+}
+
 @end
