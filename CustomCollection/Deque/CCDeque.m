@@ -9,7 +9,11 @@
 #import "CCDeque.h"
 #import "CCNode.h"
 
-NSUInteger const kDefaultCapacity = 100;
+NSUInteger const kCCDequeDefaultCapacity = 100;
+NSString *const kCCDequeHeadNodeKey = @"CCDequeHeadNodeKey";
+NSString *const kCCDequeTailNodeKey = @"CCDequeTailNodeKey";
+NSString *const kCCDequeCountKey = @"CCDequeCountKey";
+
 
 @interface CCDeque ()
 
@@ -28,8 +32,7 @@ NSUInteger const kDefaultCapacity = 100;
 #pragma mark - initializers
 
 - (instancetype)init {
-  self = [self initWithCapacity:kDefaultCapacity];
-  return self;
+  return [self initWithCapacity:kCCDequeDefaultCapacity];
 }
 
 - (instancetype)initWithCapacity:(NSInteger)capacity {
@@ -91,22 +94,23 @@ NSUInteger const kDefaultCapacity = 100;
 
 #pragma mark - peak methods
 
-- (id) peakHeadObject {
+- (id)peakHeadObject {
   if(!(self.count)) {
     NSLog(@"There's no elements in deque");
   }
   return self.headNode.object;
 }
 
-- (id) peakTailObject {
+- (id)peakTailObject {
   if(!(self.count)) {
     NSLog(@"There's no elements in deque");
   }
-  return self.tailNode.object;}
+  return self.tailNode.object;
+}
 
 #pragma mark - NSCopying
 
--(id)copyWithZone:(NSZone *)zone {
+- (id)copyWithZone:(NSZone *)zone {
   CCDeque *copy = [[[self class] allocWithZone:zone] initWithCapacity:self.capacity];
   copy.headNode = self.headNode;
   copy.tailNode = self.tailNode;
@@ -116,12 +120,53 @@ NSUInteger const kDefaultCapacity = 100;
 
 #pragma mark - NSCoding
 
--(instancetype)initWithCoder:(NSCoder *)aDecoder {
-  return nil;
+- (instancetype)initWithCoder:(NSCoder *)aDecoder {
+  self.headNode = [aDecoder decodeObjectForKey:kCCDequeHeadNodeKey];
+  self.tailNode = [aDecoder decodeObjectForKey:kCCDequeTailNodeKey];
+  self.count = [aDecoder decodeInt64ForKey:kCCDequeCountKey];
+  return self;
 }
 
--(void)encodeWithCoder:(NSCoder *)aCoder {
-  
+- (void)encodeWithCoder:(NSCoder *)aCoder {
+  [aCoder encodeObject:self.headNode forKey:kCCDequeHeadNodeKey];
+  [aCoder encodeObject:self.tailNode forKey:kCCDequeTailNodeKey];
+  [aCoder encodeInt64:self.count forKey:kCCDequeCountKey];
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 @end
