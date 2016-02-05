@@ -17,7 +17,10 @@ int main(int argc, const char * argv[]) {
         NSNumber *testObj = @1;
         NSNumber *testObj2 = @2;
         NSNumber *testObj3 = @3;
+        NSNumber *testObj4 = @4;
         
+        /*DequeTest
+        {
         CCDeque *theVeryNewTestDeque = [[CCDeque alloc] initWithCapacity:10];
         
         [theVeryNewTestDeque pushFront:testObj];
@@ -78,16 +81,34 @@ int main(int argc, const char * argv[]) {
         NSLog(@"%@ - NEWhead", [newDeque peakHeadObject]);
         NSLog(@"%@ - NEWtail", [newDeque peakTailObject]);
         NSLog(@"%li - count",(long)archiveTestDeque.count);
+        }
+        */
         
+        CCSingleLinkedList *listTest = [[CCSingleLinkedList alloc] initWithCapacity:5];
         
-        CCSingleLinkedList *listTest = [CCSingleLinkedList new];
-        [listTest addObject:testObj];
-        [listTest addObject:testObj2];
-        [listTest addObject:testObj3];
-        
-        [listTest removeObject:testObj];
+//        NSMutableArray *testArray = [NSMutableArray new];
+//        
+//        [testArray addObject:testObj];
+//        [testArray addObject:testObj2];
+//        [testArray addObject:testObj3];
+//        [testArray addObject:testObj4];
+//        [testArray addObject:testObj4];
+//        [testArray addObject:testObj4];
+//        [testArray removeObject:testObj4];
+//        [testArray addObject:testObj4];
 
         
+        
+        [listTest addObject:testObj];
+        
+        [listTest addObject:testObj2];
+        
+        [listTest addObject:testObj3];
+        
+        [listTest addObject:testObj4];
+        
+        NSLog(@"%@", [listTest objectAtIndex:3]);
+
         
         
         

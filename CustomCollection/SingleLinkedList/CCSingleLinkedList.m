@@ -16,8 +16,9 @@ NSUInteger const kCCListDefaultCapacity = 100;
 @property (nonatomic, readwrite) NSInteger count;
 @property (nonatomic) NSUInteger capacity;
 
+@property (nonatomic) CCNodeList *tailNode;
 @property (nonatomic) CCNodeList *headNode;
-//@property (nonatomic) CCNodeList *tailNode;
+
 
 @end
 
@@ -39,12 +40,22 @@ NSUInteger const kCCListDefaultCapacity = 100;
 #pragma mark - addition methods
 
 - (void)addObject:(id)object {
-    CCNodeList *currentNode = [CCNodeList new];
-    currentNode.object = object;
-    currentNode.nextNode = self.headNode;
-    self.headNode = currentNode;
-    self.count++;
-    
+    if (self.count >= self.capacity) {
+        NSLog(@"ALARM!!! You're beyond bounds");
+    } else {
+        CCNodeList *currentNode = [CCNodeList new];
+        currentNode.object = object;
+        if(!self.tailNode) {
+            self.tailNode = self.headNode = currentNode;
+        } else if (!self.tailNode.nextNode){
+            self.tailNode.nextNode = currentNode;
+            self.headNode = currentNode;
+        } else {
+            self.headNode.nextNode = currentNode;
+            self.headNode = currentNode;
+        }
+        self.count++;
+    }
 }
 
 
@@ -57,18 +68,6 @@ NSUInteger const kCCListDefaultCapacity = 100;
 - (void)removeObject:(id)object {
     CCNodeList *removedNode = [CCNodeList new];
     removedNode.object = object;
-    if ([removedNode.object isEqualTo:self.headNode.object]) {
-        self.headNode = self.headNode.nextNode;
-    } else {
-        CCNodeList *nodeToCompare = self.headNode.nextNode;
-        removedNode.nextNode = nodeToCompare;
-        while (![removedNode.object isEqualTo:nodeToCompare.object]) {
-            removedNode.nextNode = nodeToCompare;
-            nodeToCompare = nodeToCompare.nextNode;
-        }
-        removedNode.nextNode = nodeToCompare.nextNode;
-    }
-    self.count--;
 }
 
 - (void)removeObjectAtIndex:(NSUInteger)index {
@@ -78,7 +77,30 @@ NSUInteger const kCCListDefaultCapacity = 100;
 #pragma mark - return object method
 
 - (id)objectAtIndex:(NSUInteger)index {
-    return self;
+    NSUInteger counter = 1;
+    while (counter < index) {
+        self.tailNode = self.tailNode.nextNode;
+        counter ++;
+    }
+    return self.tailNode.object;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 @end
