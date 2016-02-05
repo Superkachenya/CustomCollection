@@ -8,10 +8,10 @@
 
 #import <Foundation/Foundation.h>
 
-@interface CCNode : NSObject <NSCopying, NSCoding>
+@interface CCNodeDeque : NSObject <NSCopying, NSCoding>
 
-@property (nonatomic) CCNode *nextNode;
-@property (nonatomic) CCNode *previousNode;
+@property (nonatomic) CCNodeDeque *nextNode;
+@property (nonatomic) CCNodeDeque *previousNode;
 @property (nonatomic) id object;
 
 @end

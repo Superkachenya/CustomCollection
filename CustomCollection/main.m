@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "CCDeque.h"
+#import "CCSingleLinkedList.h"
 
 int main(int argc, const char * argv[]) {
     @autoreleasepool {
@@ -77,6 +78,14 @@ int main(int argc, const char * argv[]) {
         NSLog(@"%@ - NEWhead", [newDeque peakHeadObject]);
         NSLog(@"%@ - NEWtail", [newDeque peakTailObject]);
         NSLog(@"%li - count",(long)archiveTestDeque.count);
+        
+        
+        CCSingleLinkedList *listTest = [CCSingleLinkedList new];
+        [listTest addObject:testObj];
+        [listTest addObject:testObj2];
+        [listTest addObject:testObj3];
+
+
         
         
         
