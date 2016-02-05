@@ -18,7 +18,7 @@ NSString *const kCCNodeObjectKey = @"CCNodeObjectKey";
 #pragma mark - NSCopying
 
 - (id)copyWithZone:(NSZone *)zone {
-    CCNode *copy = [[self class] new];
+    CCNode *copy = [[[self class] allocWithZone:zone] init];
     copy.nextNode = self.nextNode;
     copy.previousNode = self.previousNode;
     copy.object = self.object;

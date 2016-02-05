@@ -52,6 +52,7 @@ NSString *const kCCDequeCountKey = @"CCDequeCountKey";
     } else {
         CCNode *currentNode = [CCNode new];
         currentNode.object = object;
+        self.headNode.nextNode = currentNode;
         currentNode.previousNode = self.headNode;
         self.headNode = currentNode;
         if (!self.tailNode) {
@@ -67,6 +68,7 @@ NSString *const kCCDequeCountKey = @"CCDequeCountKey";
     } else {
         CCNode *currentNode = [CCNode new];
         currentNode.object = object;
+        self.tailNode.previousNode = currentNode;
         currentNode.nextNode = self.tailNode;
         self.tailNode = currentNode;
         if (!self.headNode) {
