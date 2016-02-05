@@ -68,6 +68,7 @@ NSUInteger const kCCListDefaultCapacity = 100;
 - (void)removeObject:(id)object {
     CCNodeList *removedNode = [CCNodeList new];
     removedNode.object = object;
+    
 }
 
 - (void)removeObjectAtIndex:(NSUInteger)index {
@@ -77,10 +78,15 @@ NSUInteger const kCCListDefaultCapacity = 100;
 #pragma mark - return object method
 
 - (id)objectAtIndex:(NSUInteger)index {
-    NSUInteger counter = 1;
-    while (counter < index) {
-        self.tailNode = self.tailNode.nextNode;
-        counter ++;
+    if (index > self.count) {
+        NSLog(@"Index Not Allowed");
+        self.tailNode = nil;
+    } else {
+        NSUInteger counter = 1;
+        while (counter < index) {
+            self.tailNode = self.tailNode.nextNode;
+            counter ++;
+        }
     }
     return self.tailNode.object;
 }
