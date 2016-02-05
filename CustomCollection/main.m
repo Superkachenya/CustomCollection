@@ -77,21 +77,38 @@ int main(int argc, const char * argv[]) {
         }
         CCDeque *theVeryNewTestDeque = [[CCDeque alloc] initWithCapacity:10];
         
-        [theVeryNewTestDeque pushBack:testObj];
+        [theVeryNewTestDeque pushFront:testObj];
         NSLog(@"%@ HEAD", [theVeryNewTestDeque peakHeadObject]);
         NSLog(@"%@ TAIL", [theVeryNewTestDeque peakTailObject]);
         
-        [theVeryNewTestDeque pushBack:testObj2];
+        [theVeryNewTestDeque pushFront:testObj2];
         
-        [theVeryNewTestDeque pushFront:testObj3];
+        [theVeryNewTestDeque pushBack:testObj3];
         
         NSLog(@"%@ HEAD", [theVeryNewTestDeque peakHeadObject]);
         NSLog(@"%@ TAIL", [theVeryNewTestDeque peakTailObject]);
         NSLog(@"%li - count",(long)theVeryNewTestDeque.count);
         
         NSLog(@"%@ - POPPED",[theVeryNewTestDeque popBack]);
-       
         
+        NSLog(@"%@ - POPPED",[theVeryNewTestDeque popFront]);
+        
+        NSLog(@"%@ - POPPED",[theVeryNewTestDeque popBack]);
+        
+        NSLog(@"%@ HEAD", [theVeryNewTestDeque peakHeadObject]);
+        NSLog(@"%@ TAIL", [theVeryNewTestDeque peakTailObject]);
+        
+        [theVeryNewTestDeque pushBack:testObj3];
+        
+        NSLog(@"%@ HEAD", [theVeryNewTestDeque peakHeadObject]);
+        NSLog(@"%@ TAIL", [theVeryNewTestDeque peakTailObject]);
+
+
+       
+        NSLog(@"%@ - POPPED",[theVeryNewTestDeque popBack]);
+        NSLog(@"%@ - POPPED",[theVeryNewTestDeque popBack]);
+
+
         NSLog(@"%li - count",(long)theVeryNewTestDeque.count);
         
         

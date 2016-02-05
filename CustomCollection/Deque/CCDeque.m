@@ -84,27 +84,25 @@ NSString *const kCCDequeCountKey = @"CCDequeCountKey";
 #pragma mark - pop methods
 
 - (id)popFront {
-    CCNode *currentNode = [CCNode new];
-    currentNode = self.headNode;
-    currentNode.object = self.headNode.object;
-    self.headNode = self.headNode.previousNode;
-    if (!self.headNode) {
-        self.headNode = self.tailNode.nextNode;
+    CCNode *poppedNode = [CCNode new];
+    if ([self.headNode isEqualTo:self.tailNode]) {
+        self.tailNode = nil;
     }
+    poppedNode.object = self.headNode.object;
+    self.headNode = self.headNode.previousNode;
+    self.headNode.nextNode = nil;
     self.count--;
-    return currentNode.object;
+    return poppedNode.object;
 }
 
 - (id)popBack {
     CCNode *poppedNode = [CCNode new];
+    if ([self.tailNode isEqualTo:self.headNode]) {
+        self.headNode = nil;
+    }
     poppedNode.object = self.tailNode.object;
     self.tailNode = self.tailNode.nextNode;
     self.tailNode.previousNode = nil;
-    poppedNode.nextNode = self.tailNode;
-    self.tailNode = self.tailNode.nextNode;
-    if (!self.tailNode) {
-        self.tailNode = self.headNode.previousNode;
-    }
     self.count--;
     return poppedNode.object;
 }
