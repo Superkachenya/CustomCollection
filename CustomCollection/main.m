@@ -107,7 +107,9 @@ int main(int argc, const char * argv[]) {
 
        
         NSLog(@"%@ - POPPED",[theVeryNewTestDeque popBack]);
+        NSLog(@"%@ - POPPED",[theVeryNewTestDeque popFront]);
         NSLog(@"%@ - POPPED",[theVeryNewTestDeque popBack]);
+
 
 
         NSLog(@"%li - count",(long)theVeryNewTestDeque.count);

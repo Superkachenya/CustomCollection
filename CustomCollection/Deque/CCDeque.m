@@ -83,30 +83,36 @@ NSString *const kCCDequeCountKey = @"CCDequeCountKey";
 #pragma mark - pop methods
 
 - (id)popFront {
-    CCNode *poppedNode = [CCNode new];
+    CCNode *poppedNode = nil;
     if (!self.tailNode && !self.headNode) {
         NSLog(@"There's no elements to pop");
     } else {
-    if ([self.headNode isEqualTo:self.tailNode]) {
-        self.tailNode = nil;
-    }
-    poppedNode.object = self.headNode.object;
-    self.headNode = self.headNode.previousNode;
-    self.headNode.nextNode = nil;
-    self.count--;
+        poppedNode = [CCNode new];
+        if ([self.headNode isEqualTo:self.tailNode]) {
+            self.tailNode = nil;
+        }
+        poppedNode.object = self.headNode.object;
+        self.headNode = self.headNode.previousNode;
+        self.headNode.nextNode = nil;
+        self.count--;
     }
     return poppedNode.object;
 }
 
 - (id)popBack {
-    CCNode *poppedNode = [CCNode new];
-    if ([self.tailNode isEqualTo:self.headNode]) {
-        self.headNode = nil;
+    CCNode *poppedNode = nil;
+    if (!self.tailNode && !self.headNode) {
+        NSLog(@"There's no elements to pop");
+    } else {
+        poppedNode = [CCNode new];
+        if ([self.tailNode isEqualTo:self.headNode]) {
+            self.headNode = nil;
+        }
+        poppedNode.object = self.tailNode.object;
+        self.tailNode = self.tailNode.nextNode;
+        self.tailNode.previousNode = nil;
+        self.count--;
     }
-    poppedNode.object = self.tailNode.object;
-    self.tailNode = self.tailNode.nextNode;
-    self.tailNode.previousNode = nil;
-    self.count--;
     return poppedNode.object;
 }
 
