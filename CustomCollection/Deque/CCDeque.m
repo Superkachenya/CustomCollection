@@ -151,9 +151,13 @@ NSString *const kCCDequeCountKey = @"CCDequeCountKey";
 }
 
 - (instancetype)initWithCoder:(NSCoder *)aDecoder {
-    self.headNode = [aDecoder decodeObjectForKey:kCCDequeHeadNodeKey];
-    self.tailNode = [aDecoder decodeObjectForKey:kCCDequeTailNodeKey];
-    self.count = [aDecoder decodeInt64ForKey:kCCDequeCountKey];
+    
+    self = [super init];
+    if (self) {
+        self.headNode = [aDecoder decodeObjectForKey:kCCDequeHeadNodeKey];
+        self.tailNode = [aDecoder decodeObjectForKey:kCCDequeTailNodeKey];
+        self.count = [aDecoder decodeInt64ForKey:kCCDequeCountKey];
+    }
     return self;
 }
 

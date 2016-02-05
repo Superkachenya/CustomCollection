@@ -34,9 +34,12 @@ NSString *const kCCNodeObjectKey = @"CCNodeObjectKey";
 }
 
 - (instancetype)initWithCoder:(NSCoder *)aDecoder {
-    self.nextNode = [aDecoder decodeObjectForKey:kCCNodeNextNodeKey];
-    self.previousNode = [aDecoder decodeObjectForKey:kCCNodePreviousNodeKey];
-    self.object = [aDecoder decodeObjectForKey:kCCNodeObjectKey];
+    self = [super init];
+    if (self) {
+        self.nextNode = [aDecoder decodeObjectForKey:kCCNodeNextNodeKey];
+        self.previousNode = [aDecoder decodeObjectForKey:kCCNodePreviousNodeKey];
+        self.object = [aDecoder decodeObjectForKey:kCCNodeObjectKey];
+    }
     return self;
 }
 

@@ -17,65 +17,6 @@ int main(int argc, const char * argv[]) {
         NSNumber *testObj2 = @2;
         NSNumber *testObj3 = @3;
         
-        //DON'T FORGET TO REMOVE THIS SHIT
-        {
-            //        NSNumber *testObj4 = @4;
-            //        NSNumber *testObj5 = @5;
-            //        NSNumber *testObj6 = @6;
-            //        NSNumber *testObj7 = @7;
-            //    [testDeque pushFront:testObj];
-            //    [testDeque pushFront:testObj4];
-            //    [testDeque pushBack:testObj2];
-            //    [testDeque pushBack:testObj3];
-            //    [testDeque pushBack:testObj5];
-            //
-            //
-            //
-            //
-            //    NSLog(@"%li - count",(long)testDeque.count);
-            //
-            //    NSLog(@"%@ - head", [testDeque peakHeadObject]);
-            //    NSLog(@"%@ - tail", [testDeque peakTailObject]);
-            //
-            //    NSLog(@"%@  - popped from head", [testDeque popFront]);
-            //    NSLog(@"%@ - head", [testDeque peakHeadObject]);
-            //
-            //    NSLog(@"%@ - popped from tail", [testDeque popBack]);
-            //    NSLog(@"%@ - tail", [testDeque peakTailObject]);
-            //
-            //    NSLog(@"%li - count",(long)testDeque.count);
-            //
-            //    CCDeque *newDeque = [testDeque copy];
-            //    NSLog(@"%@ - NEWhead", [newDeque peakHeadObject]);
-            //    NSLog(@"%@ - NEWtail", [newDeque peakTailObject]);
-            //
-            //    [newDeque pushFront:testObj6];
-            //    [newDeque pushBack:testObj7];
-            //
-            //    NSLog(@"%@ - NEWhead", [newDeque peakHeadObject]);
-            //    NSLog(@"%@ - NEWtail", [newDeque peakTailObject]);
-            //
-            //    NSLog(@"%@ - head", [testDeque peakHeadObject]);
-            //    NSLog(@"%@ - tail", [testDeque peakTailObject]);
-            //
-            //
-            //
-            //    if ([NSKeyedArchiver archiveRootObject: testDeque toFile:@"CCDeque.arch"] == NO) {
-            //      NSLog (@"archiving failed");
-            //    }
-            //
-            //    CCDeque *archiveTestDeque = [NSKeyedUnarchiver unarchiveObjectWithFile:@"CCDeque.arch"];
-            //
-            //    NSLog(@"%@", [archiveTestDeque peakHeadObject]);
-            //    NSLog(@"%@", [archiveTestDeque peakTailObject]);
-            //    NSLog(@"%li - count",(long)archiveTestDeque.count);
-            //CCDeque *testDeque = [[CCDeque alloc] initWithCapacity:12];
-            
-            //        [theVeryNewTestDeque pushBack:testObj4];
-            //        [theVeryNewTestDeque pushBack:testObj5];
-            //        [theVeryNewTestDeque pushBack:testObj6];
-            //        [theVeryNewTestDeque pushBack:testObj7];
-        }
         CCDeque *theVeryNewTestDeque = [[CCDeque alloc] initWithCapacity:10];
         
         [theVeryNewTestDeque pushFront:testObj];
@@ -83,7 +24,6 @@ int main(int argc, const char * argv[]) {
         NSLog(@"%@ TAIL", [theVeryNewTestDeque peakTailObject]);
         
         [theVeryNewTestDeque pushFront:testObj2];
-        
         [theVeryNewTestDeque pushBack:testObj3];
         
         NSLog(@"%@ HEAD", [theVeryNewTestDeque peakHeadObject]);
@@ -91,9 +31,7 @@ int main(int argc, const char * argv[]) {
         NSLog(@"%li - count",(long)theVeryNewTestDeque.count);
         
         NSLog(@"%@ - POPPED",[theVeryNewTestDeque popBack]);
-        
         NSLog(@"%@ - POPPED",[theVeryNewTestDeque popFront]);
-        
         NSLog(@"%@ - POPPED",[theVeryNewTestDeque popBack]);
         
         NSLog(@"%@ HEAD", [theVeryNewTestDeque peakHeadObject]);
@@ -103,17 +41,42 @@ int main(int argc, const char * argv[]) {
         
         NSLog(@"%@ HEAD", [theVeryNewTestDeque peakHeadObject]);
         NSLog(@"%@ TAIL", [theVeryNewTestDeque peakTailObject]);
-
-
-       
+        
         NSLog(@"%@ - POPPED",[theVeryNewTestDeque popBack]);
         NSLog(@"%@ - POPPED",[theVeryNewTestDeque popFront]);
         NSLog(@"%@ - POPPED",[theVeryNewTestDeque popBack]);
-
-
-
         NSLog(@"%li - count",(long)theVeryNewTestDeque.count);
         
+        [theVeryNewTestDeque pushFront:testObj2];
+        [theVeryNewTestDeque pushBack:testObj3];
+        [theVeryNewTestDeque pushFront:testObj];
+        
+        CCDeque *newDeque = [theVeryNewTestDeque copy];
+        NSLog(@"%@ - NEWhead", [newDeque peakHeadObject]);
+        NSLog(@"%@ - NEWtail", [newDeque peakTailObject]);
+        
+        [newDeque pushFront:testObj];
+        [newDeque pushBack:testObj2];
+        
+        NSLog(@"%@ - NEWhead", [newDeque peakHeadObject]);
+        NSLog(@"%@ - NEWtail", [newDeque peakTailObject]);
+        
+        NSLog(@"%@ - HEAD", [theVeryNewTestDeque peakHeadObject]);
+        NSLog(@"%@ - TAIL", [theVeryNewTestDeque peakTailObject]);
+        
+        
+        
+        if ([NSKeyedArchiver archiveRootObject: newDeque toFile:@"CCDeque.arch"] == NO) {
+            NSLog (@"archiving failed");
+        }
+        
+        CCDeque *archiveTestDeque = [NSKeyedUnarchiver unarchiveObjectWithFile:@"CCDeque.arch"];
+        
+        NSLog(@"%@ ARCHIVEhead", [archiveTestDeque peakHeadObject]);
+        NSLog(@"%@ ARCHIVEtail", [archiveTestDeque peakTailObject]);
+        NSLog(@"%@ - NEWhead", [newDeque peakHeadObject]);
+        NSLog(@"%@ - NEWtail", [newDeque peakTailObject]);
+        NSLog(@"%li - count",(long)archiveTestDeque.count);
         
         
         
