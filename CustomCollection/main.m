@@ -81,10 +81,9 @@ int main(int argc, const char * argv[]) {
         NSLog(@"%@ HEAD", [theVeryNewTestDeque peakHeadObject]);
         NSLog(@"%@ TAIL", [theVeryNewTestDeque peakTailObject]);
         
-        [theVeryNewTestDeque pushFront:testObj2];
-        [theVeryNewTestDeque pushBack:testObj3];
+        [theVeryNewTestDeque pushBack:testObj2];
         
-        
+        [theVeryNewTestDeque pushFront:testObj3];
         
         NSLog(@"%@ HEAD", [theVeryNewTestDeque peakHeadObject]);
         NSLog(@"%@ TAIL", [theVeryNewTestDeque peakTailObject]);

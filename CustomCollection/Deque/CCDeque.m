@@ -52,11 +52,12 @@ NSString *const kCCDequeCountKey = @"CCDequeCountKey";
     } else {
         CCNode *currentNode = [CCNode new];
         currentNode.object = object;
-        self.headNode.nextNode = currentNode;
-        currentNode.previousNode = self.headNode;
-        self.headNode = currentNode;
-        if (!self.tailNode) {
-            self.tailNode = self.headNode;
+        if (!self.headNode) {
+            self.headNode = self.tailNode = currentNode;
+        } else {
+            self.headNode.nextNode = currentNode;
+            currentNode.previousNode = self.headNode;
+            self.headNode = currentNode;
         }
         self.count++;
     }
@@ -68,11 +69,12 @@ NSString *const kCCDequeCountKey = @"CCDequeCountKey";
     } else {
         CCNode *currentNode = [CCNode new];
         currentNode.object = object;
-        self.tailNode.previousNode = currentNode;
-        currentNode.nextNode = self.tailNode;
-        self.tailNode = currentNode;
-        if (!self.headNode) {
-            self.headNode = self.tailNode;
+        if (!self.tailNode) {
+            self.tailNode = self.headNode = currentNode;
+        } else {
+            self.tailNode.previousNode = currentNode;
+            currentNode.nextNode = self.tailNode;
+            self.tailNode = currentNode;
         }
         self.count++;
         
@@ -94,15 +96,17 @@ NSString *const kCCDequeCountKey = @"CCDequeCountKey";
 }
 
 - (id)popBack {
-    CCNode *currentNode = [CCNode new];
-    currentNode.nextNode = self.tailNode;
-    currentNode.object = self.tailNode.object;
+    CCNode *poppedNode = [CCNode new];
+    poppedNode.object = self.tailNode.object;
+    self.tailNode = self.tailNode.nextNode;
+    self.tailNode.previousNode = nil;
+    poppedNode.nextNode = self.tailNode;
     self.tailNode = self.tailNode.nextNode;
     if (!self.tailNode) {
         self.tailNode = self.headNode.previousNode;
     }
     self.count--;
-    return currentNode.object;
+    return poppedNode.object;
 }
 
 #pragma mark - peak methods
