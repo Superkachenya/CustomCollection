@@ -49,6 +49,7 @@ NSUInteger const kCCListDefaultCapacity = 100;
             self.tailNode = self.headNode = currentNode;
         } else if (!self.tailNode.nextNode){
             self.tailNode.nextNode = currentNode;
+            self.headNode.nextNode = currentNode;
             self.headNode = currentNode;
         } else {
             self.headNode.nextNode = currentNode;
@@ -60,7 +61,18 @@ NSUInteger const kCCListDefaultCapacity = 100;
 
 
 - (void)insertObject:(id)object atIndex:(NSUInteger)index {
-    
+    CCNodeList *tempNode = nil;
+    for (NSUInteger counter = 1; counter < index && self.tailNode.nextNode; counter++) {
+        self.tailNode = self.tailNode.nextNode;
+    }
+    tempNode = [CCNodeList new];
+    tempNode.object = object;
+    if (self.tailNode.nextNode) {
+        tempNode.nextNode = self.tailNode.nextNode;
+    } else {
+        tempNode.nextNode = nil;
+    }
+    self.tailNode = tempNode;
 }
 
 #pragma mark - remove methods
@@ -68,7 +80,6 @@ NSUInteger const kCCListDefaultCapacity = 100;
 - (void)removeObject:(id)object {
     CCNodeList *removedNode = [CCNodeList new];
     removedNode.object = object;
-    
 }
 
 - (void)removeObjectAtIndex:(NSUInteger)index {

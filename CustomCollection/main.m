@@ -100,14 +100,17 @@ int main(int argc, const char * argv[]) {
         
         
         [listTest addObject:testObj];
+        NSLog(@"%@", [listTest objectAtIndex:1]);
+
         
         [listTest addObject:testObj2];
         
         [listTest addObject:testObj3];
         
         [listTest addObject:testObj4];
-        
-        NSLog(@"%@", [listTest objectAtIndex:3]);
+        NSLog(@"%@", [listTest objectAtIndex:2]);
+        NSLog(@"%@", [listTest objectAtIndex:4]);
+        NSLog(@"%@", [listTest objectAtIndex:4]);
 
         
         
