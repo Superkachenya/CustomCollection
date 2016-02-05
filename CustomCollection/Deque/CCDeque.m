@@ -10,7 +10,6 @@
 #import "CCNode.h"
 
 NSUInteger const kCCDequeDefaultCapacity = 100;
-NSUInteger const kCCDequeOneObject = 1;
 NSString *const kCCDequeHeadNodeKey = @"CCDequeHeadNodeKey";
 NSString *const kCCDequeTailNodeKey = @"CCDequeTailNodeKey";
 NSString *const kCCDequeCountKey = @"CCDequeCountKey";
@@ -85,6 +84,9 @@ NSString *const kCCDequeCountKey = @"CCDequeCountKey";
 
 - (id)popFront {
     CCNode *poppedNode = [CCNode new];
+    if (!self.tailNode && !self.headNode) {
+        NSLog(@"There's no elements to pop");
+    } else {
     if ([self.headNode isEqualTo:self.tailNode]) {
         self.tailNode = nil;
     }
@@ -92,6 +94,7 @@ NSString *const kCCDequeCountKey = @"CCDequeCountKey";
     self.headNode = self.headNode.previousNode;
     self.headNode.nextNode = nil;
     self.count--;
+    }
     return poppedNode.object;
 }
 

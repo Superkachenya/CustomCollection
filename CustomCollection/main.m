@@ -16,12 +16,13 @@ int main(int argc, const char * argv[]) {
         NSNumber *testObj = @1;
         NSNumber *testObj2 = @2;
         NSNumber *testObj3 = @3;
-        //        NSNumber *testObj4 = @4;
-        //        NSNumber *testObj5 = @5;
-        //        NSNumber *testObj6 = @6;
-        //        NSNumber *testObj7 = @7;
+        
         //DON'T FORGET TO REMOVE THIS SHIT
         {
+            //        NSNumber *testObj4 = @4;
+            //        NSNumber *testObj5 = @5;
+            //        NSNumber *testObj6 = @6;
+            //        NSNumber *testObj7 = @7;
             //    [testDeque pushFront:testObj];
             //    [testDeque pushFront:testObj4];
             //    [testDeque pushBack:testObj2];
