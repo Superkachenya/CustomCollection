@@ -84,7 +84,8 @@ int main(int argc, const char * argv[]) {
         [listTest addObject:testObj];
         [listTest addObject:testObj2];
         [listTest addObject:testObj3];
-
+        
+        [listTest removeObject:testObj];
 
         
         
