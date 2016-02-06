@@ -107,6 +107,14 @@ int main(int argc, const char * argv[]) {
         [listTest addObject:testObj3];
         
         [listTest addObject:testObj4];
+        
+        [listTest insertObject:testObj4 atIndex:1];
+        [listTest insertObject:testObj3 atIndex:1];
+        [listTest insertObject:testObj2 atIndex:1];
+        [listTest insertObject:testObj atIndex:1];
+
+
+
 
         NSLog(@"%li COUNT", listTest.count);
         
