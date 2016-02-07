@@ -87,21 +87,7 @@ int main(int argc, const char * argv[]) {
         
         CCSingleLinkedList *listTest = [[CCSingleLinkedList alloc] initWithCapacity:5];
         
-        //        NSMutableArray *testArray = [NSMutableArray new];
-        //
-        //        [testArray addObject:testObj];
-        //        [testArray addObject:testObj2];
-        //        [testArray addObject:testObj3];
-        //        [testArray addObject:testObj4];
-        //        [testArray addObject:testObj4];
-        //        [testArray addObject:testObj4];
-        //        [testArray removeObject:testObj4];
-        //        [testArray addObject:testObj4];
-        
-        
-        
         [listTest addObject:testObj];
-        
         
         [listTest addObject:testObj2];
         
@@ -111,24 +97,15 @@ int main(int argc, const char * argv[]) {
         
         [listTest addObject:testObj5];
         
+        [listTest removeObject:testObj];
+
+        
         NSLog(@"%@ 1", [listTest objectAtIndex:1]);
         NSLog(@"%@ 2", [listTest objectAtIndex:2]);
         NSLog(@"%@ 3", [listTest objectAtIndex:3]);
         NSLog(@"%@ 4", [listTest objectAtIndex:4]);
         NSLog(@"%@ 5", [listTest objectAtIndex:5]);
         
-
-        [listTest removeObjectAtIndex:1];
-        
-        [listTest removeObjectAtIndex:2];
-        
-        [listTest removeObjectAtIndex:3];
-
-        NSLog(@"%@ 1", [listTest objectAtIndex:1]);
-        NSLog(@"%@ 2", [listTest objectAtIndex:2]);
-        NSLog(@"%@ 3", [listTest objectAtIndex:3]);
-        NSLog(@"%@ 4", [listTest objectAtIndex:4]);
-        NSLog(@"%@ 5", [listTest objectAtIndex:5]);
         
         
         

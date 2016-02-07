@@ -67,13 +67,19 @@ NSUInteger const kCCListDefaultCapacity = 100;
         CCNodeList *addedNode = [CCNodeList new];
         tempNode = self.tailNode;
         addedNode.object = object;
-        for (NSUInteger counter = 2; counter < index; counter++) {
-            tempNode = tempNode.nextNode;
-        }
-        addedNode.nextNode = tempNode.nextNode;
-        tempNode.nextNode = addedNode;
-        if (self.headNode.nextNode) {
-            self.headNode = self.headNode.nextNode;
+        if (index == 1) {
+            addedNode.nextNode = tempNode;
+            self.tailNode = addedNode;
+        } else {
+            for (NSUInteger counter = 2; counter < index; counter++) {
+                tempNode = tempNode.nextNode;
+            }
+            if (!tempNode.nextNode) {
+                self.headNode = tempNode.nextNode = addedNode;
+            } else {
+                addedNode.nextNode = tempNode.nextNode;
+                tempNode.nextNode = addedNode;
+            }
         }
         self.count++;
     }
