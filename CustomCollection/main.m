@@ -108,10 +108,18 @@ int main(int argc, const char * argv[]) {
         
         [listTest addObject:testObj4];
         
-        [listTest insertObject:testObj4 atIndex:1];
-        [listTest insertObject:testObj3 atIndex:1];
-        [listTest insertObject:testObj2 atIndex:1];
-        [listTest insertObject:testObj atIndex:1];
+        NSLog(@"%@", [listTest objectAtIndex:2]);
+        NSLog(@"%@", [listTest objectAtIndex:4]);
+
+        
+                
+//        [listTest insertObject:testObj4 atIndex:1];
+//        
+//        [listTest insertObject:testObj3 atIndex:1];
+//        
+//        [listTest insertObject:testObj2 atIndex:2];
+//        
+//        [listTest insertObject:testObj atIndex:3];
 
 
 

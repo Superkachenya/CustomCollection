@@ -57,17 +57,43 @@ NSUInteger const kCCListDefaultCapacity = 100;
     }
 }
 
+/*
+ {
+ - (void)insertObject:(id)object atIndex:(NSUInteger)index {
+ if (self.count >= self.capacity) {
+ NSLog(@"List overflow!");
+ } else {
+ NSInteger one = 1;
+ if ((index < one) | (index > self.count)) {
+ NSLog(@"Not correct index!");
+ } else {
+ CCDoublyLinkedListNode *tempNode = [[CCDoublyLinkedListNode alloc] init];
+ tempNode =  self.head;
+ for ( int i = 1; i != index; i++) {
+ tempNode = tempNode.nextObject;
+ }
+ CCDoublyLinkedListNode *newNode = [[CCDoublyLinkedListNode alloc] init];
+ newNode.object =  object;
+ newNode.nextObject = tempNode;
+ newNode.prewObject.nextObject = newNode;
+ newNode.nextObject.prewObject = newNode;
+ self.count++;
+ }
+ }
+ }
+ */
+
 
 - (void)insertObject:(id)object atIndex:(NSUInteger)index {
-    CCNodeList *tempNode = [CCNodeList new];
-    tempNode.object = object;
-    for (NSUInteger counter = 1; counter <= index && self.tailNode.nextNode; counter++) {
+    
+    for (NSUInteger counter = 1; counter < index; counter++) {
         self.tailNode = self.tailNode.nextNode;
     }
-    tempNode.nextNode = self.tailNode;
-    self.tailNode.nextNode = tempNode;
-    self.tailNode = tempNode;
-    
+    CCNodeList *addedNode = [CCNodeList new];
+    addedNode.object = object;
+    addedNode.nextNode = self.tailNode;
+    self.tailNode.nextNode = addedNode;
+    self.tailNode = addedNode;
     self.count++;
 }
 
@@ -90,20 +116,37 @@ NSUInteger const kCCListDefaultCapacity = 100;
 #pragma mark - return object method
 
 - (id)objectAtIndex:(NSUInteger)index {
-    CCNodeList *tempNode = self.tailNode;
-    if (index > self.count) {
+    CCNodeList *tempNode;
+    if (index > self.count | index < 1) {
         NSLog(@"Index Not Allowed");
         tempNode = nil;
     } else {
+        tempNode = [CCNodeList new];
+        tempNode = self.tailNode;
         for (NSUInteger counter = 1; counter < index; counter++) {
-            tempNode = self.tailNode.nextNode;
+            tempNode = tempNode.nextNode;
         }
     }
     return tempNode.object;
 }
 
 
-
+/*
+ - (id)objectAtIndex:(NSUInteger)index {
+ NSInteger one = 1;
+ if ((index < one) | (index > self.count)) {
+ NSLog(@"Not correct index!");
+ } else {
+ CCDoublyLinkedListNode *tempNode = [[CCDoublyLinkedListNode alloc] init];
+ tempNode =  self.head;
+ for ( int i = 1; i != index; i++) {
+ tempNode = tempNode.nextObject;
+ }
+ return tempNode.object;
+ }
+ return @"Not correct index!";
+ }
+ */
 
 
 
