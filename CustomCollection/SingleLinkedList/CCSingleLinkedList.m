@@ -63,9 +63,8 @@ NSUInteger const kCCListDefaultCapacity = 100;
     } else if (index > self.count + 1 | index < 1) {
         NSLog(@"Index Not Allowed");
     } else {
-        CCNodeList *tempNode = [CCNodeList new];
         CCNodeList *addedNode = [CCNodeList new];
-        tempNode = self.tailNode;
+        CCNodeList *tempNode = self.tailNode;
         addedNode.object = object;
         if (index == 1) {
             addedNode.nextNode = tempNode;
