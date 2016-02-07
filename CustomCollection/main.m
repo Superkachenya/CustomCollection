@@ -103,19 +103,27 @@ int main(int argc, const char * argv[]) {
         [listTest addObject:testObj];
         
         
-        [listTest addObject:testObj5];
-        
         [listTest addObject:testObj2];
+        
+        [listTest addObject:testObj3];
         
         [listTest addObject:testObj4];
         
-        [listTest addObject:testObj3];
-
+        [listTest addObject:testObj5];
+        
+        NSLog(@"%@ 1", [listTest objectAtIndex:1]);
+        NSLog(@"%@ 2", [listTest objectAtIndex:2]);
+        NSLog(@"%@ 3", [listTest objectAtIndex:3]);
+        NSLog(@"%@ 4", [listTest objectAtIndex:4]);
+        NSLog(@"%@ 5", [listTest objectAtIndex:5]);
         
 
+        [listTest removeObjectAtIndex:1];
         
-        [listTest removeObject:testObj5];
+        [listTest removeObjectAtIndex:2];
         
+        [listTest removeObjectAtIndex:3];
+
         NSLog(@"%@ 1", [listTest objectAtIndex:1]);
         NSLog(@"%@ 2", [listTest objectAtIndex:2]);
         NSLog(@"%@ 3", [listTest objectAtIndex:3]);

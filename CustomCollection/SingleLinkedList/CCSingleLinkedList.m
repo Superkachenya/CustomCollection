@@ -103,7 +103,27 @@ NSUInteger const kCCListDefaultCapacity = 100;
 }
 
 - (void)removeObjectAtIndex:(NSUInteger)index {
-    
+    if (index > self.count | index < 1) {
+        NSLog(@"Not Allowed Index");
+    } else {
+        CCNodeList *removedNode = self.tailNode;
+        CCNodeList *previousNode;
+        if (index == 1) {
+            self.tailNode = self.tailNode.nextNode;
+        } else {
+        for (NSUInteger counter = 2; counter <= index; counter++) {
+            previousNode = removedNode;
+            removedNode = removedNode.nextNode;
+        }
+        if (!removedNode.nextNode) {
+            self.headNode = previousNode;
+            previousNode.nextNode = nil;
+        }
+        previousNode.nextNode = removedNode.nextNode;
+        removedNode = removedNode.nextNode;
+        }
+        self.count--;
+    }
 }
 
 #pragma mark - return object method
@@ -111,8 +131,8 @@ NSUInteger const kCCListDefaultCapacity = 100;
 - (id)objectAtIndex:(NSUInteger)index {
     CCNodeList *tempNode;
     if (index > self.count | index < 1) {
-        NSLog(@"Index Not Allowed");
-        self.tailNode = nil;
+        NSLog(@"Not Allowed Index");
+        tempNode = nil;
     } else {
         tempNode = self.tailNode;
         for (NSUInteger counter = 1; counter < index; counter++) {
