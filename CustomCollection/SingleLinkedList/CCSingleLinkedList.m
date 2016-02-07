@@ -60,7 +60,7 @@ NSUInteger const kCCListDefaultCapacity = 100;
 - (void)insertObject:(id)object atIndex:(NSUInteger)index {
     if (self.count >= self.capacity) {
         NSLog(@"ALARM!!! You're beyond bounds");
-    } else if (index > self.count | index < 1) {
+    } else if (index > self.count + 1 | index < 1) {
         NSLog(@"Index Not Allowed");
     } else {
         CCNodeList *tempNode = [CCNodeList new];
@@ -91,15 +91,19 @@ NSUInteger const kCCListDefaultCapacity = 100;
     CCNodeList *comparativeNode = [CCNodeList new];
     comparativeNode.object = object;
     CCNodeList *removedNode = self.tailNode;
+    CCNodeList *previousNode;
+    if ([comparativeNode.object isEqualTo:self.tailNode.object]) {
+        self.tailNode = self.tailNode.nextNode;
+    }
     for (NSUInteger counter = 1; counter <= self.capacity; counter++) {
         if ([comparativeNode.object isEqualTo:removedNode.object]) {
-            CCNodeList *previousNode = comparativeNode.nextNode;
+            previousNode = comparativeNode.nextNode;
+            if (!removedNode.nextNode) {
+                self.headNode = previousNode;
+            }
             removedNode = removedNode.nextNode;
             previousNode.nextNode = removedNode;
             comparativeNode.nextNode = previousNode;
-            if (!removedNode.nextNode) {
-                removedNode = self.headNode;
-            }
             self.count--;
             continue;
         }
@@ -117,16 +121,16 @@ NSUInteger const kCCListDefaultCapacity = 100;
         if (index == 1) {
             self.tailNode = self.tailNode.nextNode;
         } else {
-        for (NSUInteger counter = 2; counter <= index; counter++) {
-            previousNode = removedNode;
+            for (NSUInteger counter = 2; counter <= index; counter++) {
+                previousNode = removedNode;
+                removedNode = removedNode.nextNode;
+            }
+            if (!removedNode.nextNode) {
+                self.headNode = previousNode;
+                previousNode.nextNode = nil;
+            }
+            previousNode.nextNode = removedNode.nextNode;
             removedNode = removedNode.nextNode;
-        }
-        if (!removedNode.nextNode) {
-            self.headNode = previousNode;
-            previousNode.nextNode = nil;
-        }
-        previousNode.nextNode = removedNode.nextNode;
-        removedNode = removedNode.nextNode;
         }
         self.count--;
     }
