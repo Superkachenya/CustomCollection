@@ -18,6 +18,7 @@ int main(int argc, const char * argv[]) {
         NSNumber *testObj2 = @2;
         NSNumber *testObj3 = @3;
         NSNumber *testObj4 = @4;
+        NSString *testObj5 = @"A";
         
         /*DequeTest
          {
@@ -108,22 +109,32 @@ int main(int argc, const char * argv[]) {
         
         [listTest addObject:testObj4];
         
-        NSLog(@"%@", [listTest objectAtIndex:2]);
-        NSLog(@"%@", [listTest objectAtIndex:4]);
+        [listTest insertObject:testObj5 atIndex:4];
+        NSLog(@"%@ 4", [listTest objectAtIndex:4]);
+        
+        [listTest insertObject:testObj5 atIndex:2];
+        NSLog(@"%@ 2", [listTest objectAtIndex:2]);
+        NSLog(@"%@ 3", [listTest objectAtIndex:3]);
+
 
         
-                
-//        [listTest insertObject:testObj4 atIndex:1];
-//        
-//        [listTest insertObject:testObj3 atIndex:1];
-//        
-//        [listTest insertObject:testObj2 atIndex:2];
-//        
-//        [listTest insertObject:testObj atIndex:3];
+        [listTest insertObject:testObj5 atIndex:3];
+        NSLog(@"%@ 3", [listTest objectAtIndex:3]);
 
-
-
-
+        
+        NSLog(@"%@ 2", [listTest objectAtIndex:2]);
+        NSLog(@"%@ 4", [listTest objectAtIndex:4]);
+        NSLog(@"%@ 1", [listTest objectAtIndex:1]);
+        NSLog(@"%@ 3", [listTest objectAtIndex:3]);
+        NSLog(@"%@ 2", [listTest objectAtIndex:2]);
+        
+        
+        
+        
+        
+        
+        
+        
         NSLog(@"%li COUNT", listTest.count);
         
         
