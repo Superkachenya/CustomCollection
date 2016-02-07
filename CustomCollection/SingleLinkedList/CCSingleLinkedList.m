@@ -59,19 +59,16 @@ NSUInteger const kCCListDefaultCapacity = 100;
 
 
 - (void)insertObject:(id)object atIndex:(NSUInteger)index {
-    CCNodeList *tempNode = nil;
-      
+    CCNodeList *tempNode = [CCNodeList new];
+    tempNode.object = object;
     for (NSUInteger counter = 1; counter <= index && self.tailNode.nextNode; counter++) {
         self.tailNode = self.tailNode.nextNode;
     }
-    tempNode = [CCNodeList new];
-    tempNode.object = object;
-    if (self.tailNode.nextNode) {
-        tempNode.nextNode = self.tailNode.nextNode;
-    } else {
-        tempNode.nextNode = nil;
-    }
+    tempNode.nextNode = self.tailNode;
+    self.tailNode.nextNode = tempNode;
     self.tailNode = tempNode;
+    
+    self.count++;
 }
 
 #pragma mark - remove methods
