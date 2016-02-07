@@ -82,13 +82,23 @@ NSUInteger const kCCListDefaultCapacity = 100;
 #pragma mark - remove methods
 
 - (void)removeObject:(id)object {
-    CCNodeList *removedNode = [CCNodeList new];
-    removedNode.object = object;
-    CCNodeList *compareNode = self.tailNode;
+    CCNodeList *comparativeNode = [CCNodeList new];
+    comparativeNode.object = object;
+    CCNodeList *removedNode = self.tailNode;
     for (NSUInteger counter = 1; counter <= self.capacity; counter++) {
-        if ([removedNode.object isEqualTo:compareNode.object]) {
-            
+        if ([comparativeNode.object isEqualTo:removedNode.object]) {
+            CCNodeList *previousNode = comparativeNode.nextNode;
+            removedNode = removedNode.nextNode;
+            previousNode.nextNode = removedNode;
+            comparativeNode.nextNode = previousNode;
+            if (!removedNode.nextNode) {
+                removedNode = self.headNode;
+            }
+            self.count--;
+            continue;
         }
+        comparativeNode.nextNode = removedNode;
+        removedNode = removedNode.nextNode;
     }
 }
 
@@ -102,9 +112,8 @@ NSUInteger const kCCListDefaultCapacity = 100;
     CCNodeList *tempNode;
     if (index > self.count | index < 1) {
         NSLog(@"Index Not Allowed");
-        tempNode = nil;
+        self.tailNode = nil;
     } else {
-        tempNode = [CCNodeList new];
         tempNode = self.tailNode;
         for (NSUInteger counter = 1; counter < index; counter++) {
             tempNode = tempNode.nextNode;
