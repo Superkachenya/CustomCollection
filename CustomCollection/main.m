@@ -98,7 +98,6 @@ int main(int argc, const char * argv[]) {
         [listTest addObject:testObj];
         [listTest addObject:testObj5];
 
-        
         NSLog(@"%@ 1", [listTest objectAtIndex:1]);
         NSLog(@"%@ 2", [listTest objectAtIndex:2]);
         NSLog(@"%@ 3", [listTest objectAtIndex:3]);
@@ -108,9 +107,7 @@ int main(int argc, const char * argv[]) {
         NSLog(@"%@ 7", [listTest objectAtIndex:7]);
         NSLog(@"%@ 8", [listTest objectAtIndex:8]);
         NSLog(@"%@ 9", [listTest objectAtIndex:9]);
-        NSLog(@"%@ 10\n", [listTest objectAtIndex:10]);
-        
-        
+        NSLog(@"%@ 10", [listTest objectAtIndex:10]);
         
         [listTest removeObject:testObj5];
         
@@ -118,7 +115,7 @@ int main(int argc, const char * argv[]) {
         NSLog(@"%@ 2", [listTest objectAtIndex:2]);
         NSLog(@"%@ 3", [listTest objectAtIndex:3]);
         NSLog(@"%@ 4", [listTest objectAtIndex:4]);
-        NSLog(@"%@ 5\n", [listTest objectAtIndex:5]);
+        NSLog(@"%@ 5", [listTest objectAtIndex:5]);
 
         [listTest insertObject:testObj5 atIndex:1];
         [listTest insertObject:testObj atIndex:1];
@@ -136,21 +133,22 @@ int main(int argc, const char * argv[]) {
         NSLog(@"%@ 7", [listTest objectAtIndex:7]);
         NSLog(@"%@ 8", [listTest objectAtIndex:8]);
         NSLog(@"%@ 9", [listTest objectAtIndex:9]);
-        NSLog(@"%@ 10\n", [listTest objectAtIndex:10]);
+        NSLog(@"%@ 10", [listTest objectAtIndex:10]);
         
         
+        [listTest removeObjectAtIndex:10];
+        [listTest removeObjectAtIndex:9];
+        [listTest removeObjectAtIndex:8];
+        [listTest removeObjectAtIndex:7];
+        [listTest removeObjectAtIndex:6];
+        [listTest removeObjectAtIndex:5];
+        [listTest removeObjectAtIndex:4];
         
-        
-        
-        
-        
-        
+        NSLog(@"%@ 1", [listTest objectAtIndex:1]);
+        NSLog(@"%@ 2", [listTest objectAtIndex:2]);
+        NSLog(@"%@ 3", [listTest objectAtIndex:3]);
         
         NSLog(@"%li COUNT", listTest.count);
-        
-        
-        
-        
         
     }
     return 0;
