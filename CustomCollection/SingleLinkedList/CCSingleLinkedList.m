@@ -88,16 +88,16 @@ NSUInteger const kCCListDefaultCapacity = 100;
 - (void)removeObject:(id)object {
     CCNodeList *comparativeNode = [CCNodeList new];
     comparativeNode.object = object;
-    CCNodeList *removedNode = self.tailNode;
+    CCNodeList *removedNode = self.headNode;
     CCNodeList *previousNode;
-    if ([comparativeNode.object isEqualTo:self.tailNode.object]) {
-        self.tailNode = self.tailNode.nextNode;
+    if ([comparativeNode.object isEqualTo:self.headNode.object]) {
+        self.headNode = self.headNode.nextNode;
     }
-    for (NSUInteger counter = 1; counter <= self.capacity; counter++) {
+    for (NSUInteger counter = 0; counter <= self.count; counter++) {
         if ([comparativeNode.object isEqualTo:removedNode.object]) {
             previousNode = comparativeNode.nextNode;
             if (!removedNode.nextNode) {
-                self.headNode = previousNode;
+                self.tailNode = previousNode;
             }
             removedNode = removedNode.nextNode;
             previousNode.nextNode = removedNode;
@@ -114,18 +114,17 @@ NSUInteger const kCCListDefaultCapacity = 100;
     if (index > self.count) {
         NSLog(@"Not Allowed Index");
     } else {
-        CCNodeList *removedNode = self.tailNode;
+        CCNodeList *removedNode = self.headNode;
         CCNodeList *previousNode;
-        if (index == 1) {
-            self.tailNode = self.tailNode.nextNode;
+        if (index == 0) {
+            self.headNode = self.headNode.nextNode;
         } else {
-            for (NSUInteger counter = 2; counter <= index; counter++) {
+            for (NSUInteger counter = 1; counter <= index; counter++) {
                 previousNode = removedNode;
                 removedNode = removedNode.nextNode;
             }
             if (!removedNode.nextNode) {
-                self.headNode = previousNode;
-                previousNode.nextNode = nil;
+                self.tailNode = previousNode;
             }
             previousNode.nextNode = removedNode.nextNode;
             removedNode = removedNode.nextNode;
@@ -138,12 +137,12 @@ NSUInteger const kCCListDefaultCapacity = 100;
 
 - (id)objectAtIndex:(NSInteger)index {
     CCNodeList *tempNode;
-    if (index > self.count | index < 1) {
+    if (index > self.count) {
         NSLog(@"Not Allowed Index");
         tempNode = nil;
     } else {
-        tempNode = self.tailNode;
-        for (NSUInteger counter = 1; counter < index; counter++) {
+        tempNode = self.headNode;
+        for (NSUInteger counter = 0; counter < index; counter++) {
             tempNode = tempNode.nextNode;
         }
     }

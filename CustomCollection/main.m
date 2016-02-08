@@ -126,12 +126,12 @@ int main(int argc, const char * argv[]) {
 
 
         
-        NSLog(@"%@ 1", [listTest objectAtIndex:1]);
-        NSLog(@"%@ 2", [listTest objectAtIndex:2]);
-        NSLog(@"%@ 3", [listTest objectAtIndex:3]);
-        NSLog(@"%@ 4", [listTest objectAtIndex:4]);
-        NSLog(@"%@ 5", [listTest objectAtIndex:5]);
-        NSLog(@"%@ 6", [listTest objectAtIndex:6]);
+        NSLog(@"%@ 1", [listTest objectAtIndex:0]);
+        NSLog(@"%@ 2", [listTest objectAtIndex:1]);
+        NSLog(@"%@ 3", [listTest objectAtIndex:2]);
+        NSLog(@"%@ 4", [listTest objectAtIndex:3]);
+        NSLog(@"%@ 5", [listTest objectAtIndex:4]);
+        NSLog(@"%@ 6", [listTest objectAtIndex:5]);
 //        NSLog(@"%@ 7", [listTest objectAtIndex:7]);
 //        NSLog(@"%@ 8", [listTest objectAtIndex:8]);
 //        NSLog(@"%@ 9", [listTest objectAtIndex:9]);
@@ -143,13 +143,15 @@ int main(int argc, const char * argv[]) {
 //        [listTest removeObjectAtIndex:8];
 //        [listTest removeObjectAtIndex:7];
 //        [listTest removeObjectAtIndex:6];
-//        [listTest removeObjectAtIndex:5];
-//        [listTest removeObjectAtIndex:4];
-//        
-//        NSLog(@"%@ 1", [listTest objectAtIndex:1]);
-//        NSLog(@"%@ 2", [listTest objectAtIndex:2]);
-//        NSLog(@"%@ 3", [listTest objectAtIndex:3]);
-//        
+        [listTest removeObjectAtIndex:5];
+        [listTest removeObjectAtIndex:4];
+        
+        NSLog(@"%@ 1", [listTest objectAtIndex:0]);
+        NSLog(@"%@ 2", [listTest objectAtIndex:1]);
+        NSLog(@"%@ 3", [listTest objectAtIndex:2]);
+        NSLog(@"%@ 4", [listTest objectAtIndex:3]);
+
+        
         NSLog(@"%li COUNT", listTest.count);
         
     }
