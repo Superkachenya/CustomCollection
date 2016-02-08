@@ -12,7 +12,6 @@ NSString *const kCCNodeNextNodeKey = @"CCNodeNextNodeKey";
 NSString *const kCCNodePreviousNodeKey = @"CCNodePreviousNodeKey";
 NSString *const kCCNodeObjectKey = @"CCNodeObjectKey";
 
-
 @implementation CCNodeDeque
 
 #pragma mark - NSCopying
@@ -27,18 +26,17 @@ NSString *const kCCNodeObjectKey = @"CCNodeObjectKey";
 
 #pragma mark - NSCoding
 
-- (void)encodeWithCoder:(NSCoder *)aCoder {
-    [aCoder encodeObject:self.nextNode forKey:kCCNodeNextNodeKey];
-    [aCoder encodeObject:self.previousNode forKey:kCCNodePreviousNodeKey];
-    [aCoder encodeObject:self.object forKey:kCCNodeObjectKey];
+- (void)encodeWithCoder:(NSCoder *)coder {
+    [coder encodeObject:self.nextNode forKey:kCCNodeNextNodeKey];
+    [coder encodeObject:self.previousNode forKey:kCCNodePreviousNodeKey];
+    [coder encodeObject:self.object forKey:kCCNodeObjectKey];
 }
 
-- (instancetype)initWithCoder:(NSCoder *)aDecoder {
-    self = [super init];
-    if (self) {
-        self.nextNode = [aDecoder decodeObjectForKey:kCCNodeNextNodeKey];
-        self.previousNode = [aDecoder decodeObjectForKey:kCCNodePreviousNodeKey];
-        self.object = [aDecoder decodeObjectForKey:kCCNodeObjectKey];
+- (instancetype)initWithCoder:(NSCoder *)decoder {
+    if (self = [super init]) {
+        self.nextNode = [decoder decodeObjectForKey:kCCNodeNextNodeKey];
+        self.previousNode = [decoder decodeObjectForKey:kCCNodePreviousNodeKey];
+        self.object = [decoder decodeObjectForKey:kCCNodeObjectKey];
     }
     return self;
 }

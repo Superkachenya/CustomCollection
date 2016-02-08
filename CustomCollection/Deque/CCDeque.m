@@ -14,20 +14,16 @@ NSString *const kCCDequeHeadNodeKey = @"CCDequeHeadNodeKey";
 NSString *const kCCDequeTailNodeKey = @"CCDequeTailNodeKey";
 NSString *const kCCDequeCountKey = @"CCDequeCountKey";
 
-
 @interface CCDeque ()
 
 @property (nonatomic) NSUInteger capacity;
 @property (nonatomic, readwrite) NSInteger count;
-
 @property (nonatomic) CCNodeDeque *headNode;
 @property (nonatomic) CCNodeDeque *tailNode;
-
 
 @end
 
 @implementation CCDeque
-
 
 #pragma mark - initializers
 
@@ -36,8 +32,7 @@ NSString *const kCCDequeCountKey = @"CCDequeCountKey";
 }
 
 - (instancetype)initWithCapacity:(NSInteger)capacity {
-    self = [super init];
-    if (self) {
+    if (self = [super init]) {
         self.capacity = capacity;
     }
     return self;
@@ -84,7 +79,7 @@ NSString *const kCCDequeCountKey = @"CCDequeCountKey";
 
 - (id)popFront {
     CCNodeDeque *poppedNode = nil;
-    if (!self.tailNode && !self.headNode) {
+    if (!self.count) {
         NSLog(@"There's no elements to pop");
     } else {
         poppedNode = [CCNodeDeque new];
@@ -101,7 +96,7 @@ NSString *const kCCDequeCountKey = @"CCDequeCountKey";
 
 - (id)popBack {
     CCNodeDeque *poppedNode = nil;
-    if (!self.tailNode && !self.headNode) {
+    if (!self.count) {
         NSLog(@"There's no elements to pop");
     } else {
         poppedNode = [CCNodeDeque new];
@@ -144,19 +139,17 @@ NSString *const kCCDequeCountKey = @"CCDequeCountKey";
 
 #pragma mark - NSCoding
 
-- (void)encodeWithCoder:(NSCoder *)aCoder {
-    [aCoder encodeObject:self.headNode forKey:kCCDequeHeadNodeKey];
-    [aCoder encodeObject:self.tailNode forKey:kCCDequeTailNodeKey];
-    [aCoder encodeInt64:self.count forKey:kCCDequeCountKey];
+- (void)encodeWithCoder:(NSCoder *)coder {
+    [coder encodeObject:self.headNode forKey:kCCDequeHeadNodeKey];
+    [coder encodeObject:self.tailNode forKey:kCCDequeTailNodeKey];
+    [coder encodeInt64:self.count forKey:kCCDequeCountKey];
 }
 
-- (instancetype)initWithCoder:(NSCoder *)aDecoder {
-    
-    self = [super init];
-    if (self) {
-        self.headNode = [aDecoder decodeObjectForKey:kCCDequeHeadNodeKey];
-        self.tailNode = [aDecoder decodeObjectForKey:kCCDequeTailNodeKey];
-        self.count = [aDecoder decodeInt64ForKey:kCCDequeCountKey];
+- (instancetype)initWithCoder:(NSCoder *)decoder {
+    if (self = [super init]) {
+        self.headNode = [decoder decodeObjectForKey:kCCDequeHeadNodeKey];
+        self.tailNode = [decoder decodeObjectForKey:kCCDequeTailNodeKey];
+        self.count = [decoder decodeInt64ForKey:kCCDequeCountKey];
     }
     return self;
 }

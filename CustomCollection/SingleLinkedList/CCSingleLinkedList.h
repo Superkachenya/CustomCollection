@@ -12,15 +12,24 @@
 
 @property (nonatomic, readonly) NSInteger count;
 
-
+#pragma mark - Required initializer
 
 - (instancetype)initWithCapacity:(NSInteger)capacity;
 
+#pragma mark - Addition methods
+
 - (void)addObject:(id)object;
-- (id)objectAtIndex:(NSUInteger)index;
 - (void)insertObject:(id)object atIndex:(NSUInteger)index;
+
+#pragma mark - Remove methods
+
 - (void)removeObject:(id)object;
 - (void)removeObjectAtIndex:(NSUInteger)index;
+
+#pragma mark - Get object method
+
+- (id)objectAtIndex:(NSUInteger)index;
+
 
 
 @end

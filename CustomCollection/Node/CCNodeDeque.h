@@ -10,8 +10,8 @@
 
 @interface CCNodeDeque : NSObject <NSCopying, NSCoding>
 
-@property (nonatomic) CCNodeDeque *nextNode;
-@property (nonatomic) CCNodeDeque *previousNode;
-@property (nonatomic) id object;
+@property (strong, nonatomic) CCNodeDeque *nextNode;
+@property (weak, nonatomic) CCNodeDeque *previousNode;
+@property (strong, nonatomic) id object;
 
 @end

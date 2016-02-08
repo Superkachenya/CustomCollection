@@ -10,7 +10,7 @@
 
 @interface CCNodeList : NSObject
 
-@property (nonatomic) CCNodeList *nextNode;
-@property (nonatomic) id object;
+@property (strong, nonatomic) CCNodeList *nextNode;
+@property (strong, nonatomic) id object;
 
 @end
