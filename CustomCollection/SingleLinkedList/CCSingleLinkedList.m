@@ -56,24 +56,24 @@ NSUInteger const kCCListDefaultCapacity = 100;
     }
 }
 
-- (void)insertObject:(id)object atIndex:(NSUInteger)index {
+- (void)insertObject:(id)object atIndex:(NSInteger)index {
     if (self.count >= self.capacity) {
         NSLog(@"ALARM!!! You're beyond bounds");
-    } else if (index > self.count + 1 || index < 1) {
+    } else if (index > self.count) {
         NSLog(@"Index Not Allowed");
     } else {
         CCNodeList *addedNode = [CCNodeList new];
-        CCNodeList *tempNode = self.tailNode;
+        CCNodeList *tempNode = self.headNode;
         addedNode.object = object;
         if (index == 0) {
             addedNode.nextNode = tempNode;
-            self.tailNode = addedNode;
+            self.headNode = addedNode;
         } else {
-            for (NSUInteger counter = 2; counter < index; counter++) {
+            for (NSInteger counter = 1; counter < index; counter++) {
                 tempNode = tempNode.nextNode;
             }
             if (!tempNode.nextNode) {
-                self.headNode = tempNode.nextNode = addedNode;
+                self.tailNode = tempNode.nextNode = addedNode;
             } else {
                 addedNode.nextNode = tempNode.nextNode;
                 tempNode.nextNode = addedNode;
@@ -110,8 +110,8 @@ NSUInteger const kCCListDefaultCapacity = 100;
     }
 }
 
-- (void)removeObjectAtIndex:(NSUInteger)index {
-    if (index > self.count || index < 1) {
+- (void)removeObjectAtIndex:(NSInteger)index {
+    if (index > self.count) {
         NSLog(@"Not Allowed Index");
     } else {
         CCNodeList *removedNode = self.tailNode;
@@ -136,7 +136,7 @@ NSUInteger const kCCListDefaultCapacity = 100;
 
 #pragma mark - Get object method
 
-- (id)objectAtIndex:(NSUInteger)index {
+- (id)objectAtIndex:(NSInteger)index {
     CCNodeList *tempNode;
     if (index > self.count | index < 1) {
         NSLog(@"Not Allowed Index");

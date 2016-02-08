@@ -19,16 +19,16 @@
 #pragma mark - Addition methods
 
 - (void)addObject:(id)object;
-- (void)insertObject:(id)object atIndex:(NSUInteger)index;
+- (void)insertObject:(id)object atIndex:(NSInteger)index;
 
 #pragma mark - Remove methods
 
 - (void)removeObject:(id)object;
-- (void)removeObjectAtIndex:(NSUInteger)index;
+- (void)removeObjectAtIndex:(NSInteger)index;
 
 #pragma mark - Get object method
 
-- (id)objectAtIndex:(NSUInteger)index;
+- (id)objectAtIndex:(NSInteger)index;
 
 
 
