@@ -88,8 +88,11 @@ NSUInteger const kCCListDefaultCapacity = 100;
     for (NSUInteger counter = 0; counter <= self.count; counter++) {
         if ([self.headNode.object isEqualTo:object]) {
             self.headNode = self.headNode.nextNode;
+            counter--;
             self.count--;
-        } else  break;
+        } else {
+            break;
+        }
     }
     previousNode = self.headNode;
     removedNode = previousNode.nextNode;
