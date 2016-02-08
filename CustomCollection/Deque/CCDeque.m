@@ -9,7 +9,7 @@
 #import "CCDeque.h"
 #import "CCDoublyNode.h"
 
-NSUInteger const kCCDequeDefaultCapacity = 100;
+NSInteger const kCCDequeDefaultCapacity = 100;
 NSString *const kCCDequeHeadNodeKey = @"CCDequeHeadNodeKey";
 NSString *const kCCDequeTailNodeKey = @"CCDequeTailNodeKey";
 NSString *const kCCDequeCountKey = @"CCDequeCountKey";
@@ -18,8 +18,8 @@ NSString *const kCCDequeCountKey = @"CCDequeCountKey";
 
 @property (nonatomic) NSUInteger capacity;
 @property (nonatomic, readwrite) NSInteger count;
-@property (nonatomic) CCDoublyNode *headNode;
-@property (nonatomic) CCDoublyNode *tailNode;
+@property (strong, nonatomic) CCDoublyNode *headNode;
+@property (strong, nonatomic) CCDoublyNode *tailNode;
 
 @end
 
@@ -34,6 +34,33 @@ NSString *const kCCDequeCountKey = @"CCDequeCountKey";
 - (instancetype)initWithCapacity:(NSInteger)capacity {
     if (self = [super init]) {
         self.capacity = capacity;
+    }
+    return self;
+}
+
+#pragma mark - NSCopying
+
+- (id)copyWithZone:(NSZone *)zone {
+    CCDeque *copy = [[[self class] allocWithZone:zone] initWithCapacity:self.capacity];
+    copy.headNode = self.headNode;
+    copy.tailNode = self.tailNode;
+    copy.count = self.count;
+    return copy;
+}
+
+#pragma mark - NSCoding
+
+- (void)encodeWithCoder:(NSCoder *)coder {
+    [coder encodeObject:self.headNode forKey:kCCDequeHeadNodeKey];
+    [coder encodeObject:self.tailNode forKey:kCCDequeTailNodeKey];
+    [coder encodeInt64:self.count forKey:kCCDequeCountKey];
+}
+
+- (instancetype)initWithCoder:(NSCoder *)decoder {
+    if (self = [super init]) {
+        self.headNode = [decoder decodeObjectForKey:kCCDequeHeadNodeKey];
+        self.tailNode = [decoder decodeObjectForKey:kCCDequeTailNodeKey];
+        self.count = [decoder decodeInt64ForKey:kCCDequeCountKey];
     }
     return self;
 }
@@ -125,33 +152,6 @@ NSString *const kCCDequeCountKey = @"CCDequeCountKey";
         NSLog(@"There's no elements in deque");
     }
     return self.tailNode.object;
-}
-
-#pragma mark - NSCopying
-
-- (id)copyWithZone:(NSZone *)zone {
-    CCDeque *copy = [[[self class] allocWithZone:zone] initWithCapacity:self.capacity];
-    copy.headNode = self.headNode;
-    copy.tailNode = self.tailNode;
-    copy.count = self.count;
-    return copy;
-}
-
-#pragma mark - NSCoding
-
-- (void)encodeWithCoder:(NSCoder *)coder {
-    [coder encodeObject:self.headNode forKey:kCCDequeHeadNodeKey];
-    [coder encodeObject:self.tailNode forKey:kCCDequeTailNodeKey];
-    [coder encodeInt64:self.count forKey:kCCDequeCountKey];
-}
-
-- (instancetype)initWithCoder:(NSCoder *)decoder {
-    if (self = [super init]) {
-        self.headNode = [decoder decodeObjectForKey:kCCDequeHeadNodeKey];
-        self.tailNode = [decoder decodeObjectForKey:kCCDequeTailNodeKey];
-        self.count = [decoder decodeInt64ForKey:kCCDequeCountKey];
-    }
-    return self;
 }
 
 @end

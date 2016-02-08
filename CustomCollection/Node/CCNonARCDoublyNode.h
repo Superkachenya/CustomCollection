@@ -10,4 +10,8 @@
 
 @interface CCNonARCDoublyNode : NSObject
 
+@property (retain, nonatomic) CCNonARCDoublyNode *nextNode;
+@property (assign, nonatomic) CCNonARCDoublyNode *previousNode;
+@property (retain, nonatomic) id object;
+
 @end
