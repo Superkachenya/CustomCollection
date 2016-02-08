@@ -6,8 +6,8 @@
 //  Copyright © 2016 Cleveroad. All rights reserved.
 //
 
-#import "CCNodeList.h"
+#import "CCSinglyNode.h"
 
-@implementation CCNodeList
+@implementation CCSinglyNode
 
 @end

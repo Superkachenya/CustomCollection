@@ -7,7 +7,7 @@
 //
 
 #import "CCDeque.h"
-#import "CCNodeDeque.h"
+#import "CCDoublyNode.h"
 
 NSUInteger const kCCDequeDefaultCapacity = 100;
 NSString *const kCCDequeHeadNodeKey = @"CCDequeHeadNodeKey";
@@ -18,8 +18,8 @@ NSString *const kCCDequeCountKey = @"CCDequeCountKey";
 
 @property (nonatomic) NSUInteger capacity;
 @property (nonatomic, readwrite) NSInteger count;
-@property (nonatomic) CCNodeDeque *headNode;
-@property (nonatomic) CCNodeDeque *tailNode;
+@property (nonatomic) CCDoublyNode *headNode;
+@property (nonatomic) CCDoublyNode *tailNode;
 
 @end
 
@@ -44,7 +44,7 @@ NSString *const kCCDequeCountKey = @"CCDequeCountKey";
     if (self.count >= self.capacity) {
         NSLog(@"ALARM!!! You're beyond bounds");
     } else {
-        CCNodeDeque *currentNode = [CCNodeDeque new];
+        CCDoublyNode *currentNode = [CCDoublyNode new];
         currentNode.object = object;
         if (!self.headNode) {
             self.headNode = self.tailNode = currentNode;
@@ -61,7 +61,7 @@ NSString *const kCCDequeCountKey = @"CCDequeCountKey";
     if (self.count >= self.capacity) {
         NSLog(@"ALARM!!! You're beyond bounds");
     } else {
-        CCNodeDeque *currentNode = [CCNodeDeque new];
+        CCDoublyNode *currentNode = [CCDoublyNode new];
         currentNode.object = object;
         if (!self.tailNode) {
             self.tailNode = self.headNode = currentNode;
@@ -78,11 +78,11 @@ NSString *const kCCDequeCountKey = @"CCDequeCountKey";
 #pragma mark - pop methods
 
 - (id)popFront {
-    CCNodeDeque *poppedNode = nil;
+    CCDoublyNode *poppedNode = nil;
     if (!self.count) {
         NSLog(@"There's no elements to pop");
     } else {
-        poppedNode = [CCNodeDeque new];
+        poppedNode = [CCDoublyNode new];
         if ([self.headNode isEqualTo:self.tailNode]) {
             self.tailNode = nil;
         }
@@ -95,11 +95,11 @@ NSString *const kCCDequeCountKey = @"CCDequeCountKey";
 }
 
 - (id)popBack {
-    CCNodeDeque *poppedNode = nil;
+    CCDoublyNode *poppedNode = nil;
     if (!self.count) {
         NSLog(@"There's no elements to pop");
     } else {
-        poppedNode = [CCNodeDeque new];
+        poppedNode = [CCDoublyNode new];
         if ([self.tailNode isEqualTo:self.headNode]) {
             self.headNode = nil;
         }

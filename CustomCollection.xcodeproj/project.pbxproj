@@ -8,10 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		8E3922771C64B4BF005757CD /* CCSingleLinkedList.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E3922761C64B4BF005757CD /* CCSingleLinkedList.m */; };
-		8E39227B1C64B528005757CD /* CCNodeList.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E39227A1C64B528005757CD /* CCNodeList.m */; };
+		8E39227B1C64B528005757CD /* CCSinglyNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E39227A1C64B528005757CD /* CCSinglyNode.m */; };
 		8E56FB901C622ED800C16A7F /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E56FB8F1C622ED800C16A7F /* main.m */; };
 		8E56FB981C622F3D00C16A7F /* CCDeque.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E56FB971C622F3D00C16A7F /* CCDeque.m */; };
-		8E56FB9C1C62520A00C16A7F /* CCNodeDeque.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E56FB9B1C62520A00C16A7F /* CCNodeDeque.m */; };
+		8E56FB9C1C62520A00C16A7F /* CCDoublyNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E56FB9B1C62520A00C16A7F /* CCDoublyNode.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -29,14 +29,14 @@
 /* Begin PBXFileReference section */
 		8E3922751C64B4BF005757CD /* CCSingleLinkedList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CCSingleLinkedList.h; path = SingleLinkedList/CCSingleLinkedList.h; sourceTree = "<group>"; };
 		8E3922761C64B4BF005757CD /* CCSingleLinkedList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CCSingleLinkedList.m; path = SingleLinkedList/CCSingleLinkedList.m; sourceTree = "<group>"; };
-		8E3922791C64B528005757CD /* CCNodeList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CCNodeList.h; path = Node/CCNodeList.h; sourceTree = "<group>"; };
-		8E39227A1C64B528005757CD /* CCNodeList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CCNodeList.m; path = Node/CCNodeList.m; sourceTree = "<group>"; };
+		8E3922791C64B528005757CD /* CCSinglyNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CCSinglyNode.h; path = Node/CCSinglyNode.h; sourceTree = "<group>"; };
+		8E39227A1C64B528005757CD /* CCSinglyNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CCSinglyNode.m; path = Node/CCSinglyNode.m; sourceTree = "<group>"; };
 		8E56FB8C1C622ED800C16A7F /* CustomCollection */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = CustomCollection; sourceTree = BUILT_PRODUCTS_DIR; };
 		8E56FB8F1C622ED800C16A7F /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		8E56FB961C622F3D00C16A7F /* CCDeque.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CCDeque.h; path = Deque/CCDeque.h; sourceTree = "<group>"; };
 		8E56FB971C622F3D00C16A7F /* CCDeque.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CCDeque.m; path = Deque/CCDeque.m; sourceTree = "<group>"; };
-		8E56FB9A1C62520A00C16A7F /* CCNodeDeque.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CCNodeDeque.h; path = Node/CCNodeDeque.h; sourceTree = "<group>"; };
-		8E56FB9B1C62520A00C16A7F /* CCNodeDeque.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CCNodeDeque.m; path = Node/CCNodeDeque.m; sourceTree = "<group>"; };
+		8E56FB9A1C62520A00C16A7F /* CCDoublyNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CCDoublyNode.h; path = Node/CCDoublyNode.h; sourceTree = "<group>"; };
+		8E56FB9B1C62520A00C16A7F /* CCDoublyNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CCDoublyNode.m; path = Node/CCDoublyNode.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -98,10 +98,10 @@
 		8E56FB9D1C62520E00C16A7F /* Nodes */ = {
 			isa = PBXGroup;
 			children = (
-				8E56FB9A1C62520A00C16A7F /* CCNodeDeque.h */,
-				8E56FB9B1C62520A00C16A7F /* CCNodeDeque.m */,
-				8E3922791C64B528005757CD /* CCNodeList.h */,
-				8E39227A1C64B528005757CD /* CCNodeList.m */,
+				8E56FB9A1C62520A00C16A7F /* CCDoublyNode.h */,
+				8E56FB9B1C62520A00C16A7F /* CCDoublyNode.m */,
+				8E3922791C64B528005757CD /* CCSinglyNode.h */,
+				8E39227A1C64B528005757CD /* CCSinglyNode.m */,
 			);
 			name = Nodes;
 			sourceTree = "<group>";
@@ -164,8 +164,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				8E56FB981C622F3D00C16A7F /* CCDeque.m in Sources */,
-				8E56FB9C1C62520A00C16A7F /* CCNodeDeque.m in Sources */,
-				8E39227B1C64B528005757CD /* CCNodeList.m in Sources */,
+				8E56FB9C1C62520A00C16A7F /* CCDoublyNode.m in Sources */,
+				8E39227B1C64B528005757CD /* CCSinglyNode.m in Sources */,
 				8E3922771C64B4BF005757CD /* CCSingleLinkedList.m in Sources */,
 				8E56FB901C622ED800C16A7F /* main.m in Sources */,
 			);

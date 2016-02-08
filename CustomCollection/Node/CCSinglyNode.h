@@ -8,9 +8,9 @@
 
 #import <Foundation/Foundation.h>
 
-@interface CCNodeList : NSObject
+@interface CCSinglyNode : NSObject
 
-@property (strong, nonatomic) CCNodeList *nextNode;
+@property (strong, nonatomic) CCSinglyNode *nextNode;
 @property (strong, nonatomic) id object;
 
 @end

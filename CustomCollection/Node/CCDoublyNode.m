@@ -6,18 +6,18 @@
 //  Copyright © 2016 Cleveroad. All rights reserved.
 //
 
-#import "CCNodeDeque.h"
+#import "CCDoublyNode.h"
 
 NSString *const kCCNodeNextNodeKey = @"CCNodeNextNodeKey";
 NSString *const kCCNodePreviousNodeKey = @"CCNodePreviousNodeKey";
 NSString *const kCCNodeObjectKey = @"CCNodeObjectKey";
 
-@implementation CCNodeDeque
+@implementation CCDoublyNode
 
 #pragma mark - NSCopying
 
 - (id)copyWithZone:(NSZone *)zone {
-    CCNodeDeque *copy = [[[self class] allocWithZone:zone] init];
+    CCDoublyNode *copy = [[[self class] allocWithZone:zone] init];
     copy.nextNode = self.nextNode;
     copy.previousNode = self.previousNode;
     copy.object = self.object;

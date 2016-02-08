@@ -8,10 +8,10 @@
 
 #import <Foundation/Foundation.h>
 
-@interface CCNodeDeque : NSObject <NSCopying, NSCoding>
+@interface CCDoublyNode : NSObject <NSCopying, NSCoding>
 
-@property (strong, nonatomic) CCNodeDeque *nextNode;
-@property (weak, nonatomic) CCNodeDeque *previousNode;
+@property (strong, nonatomic) CCDoublyNode *nextNode;
+@property (weak, nonatomic) CCDoublyNode *previousNode;
 @property (strong, nonatomic) id object;
 
 @end
