@@ -90,20 +90,17 @@ NSUInteger const kCCListDefaultCapacity = 100;
     comparativeNode.object = object;
     CCNodeList *removedNode = self.headNode;
     CCNodeList *previousNode;
-    if ([comparativeNode.object isEqualTo:self.headNode.object]) {
-        self.headNode = self.headNode.nextNode;
-    }
     for (NSUInteger counter = 0; counter <= self.count; counter++) {
         if ([comparativeNode.object isEqualTo:removedNode.object]) {
-            previousNode = comparativeNode.nextNode;
-            if (!removedNode.nextNode) {
-                self.tailNode = previousNode;
+            if ([self.headNode.object isEqualTo:comparativeNode.object]) {
+                self.headNode = self.headNode.nextNode;
+                self.count--;
             }
+            previousNode = comparativeNode.nextNode;
             removedNode = removedNode.nextNode;
             previousNode.nextNode = removedNode;
             comparativeNode.nextNode = previousNode;
             self.count--;
-            continue;
         }
         comparativeNode.nextNode = removedNode;
         removedNode = removedNode.nextNode;
