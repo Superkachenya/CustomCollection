@@ -13,10 +13,10 @@ NSUInteger const kCCListDefaultCapacity = 100;
 
 @interface CCSingleLinkedList ()
 
-@property (nonatomic, readwrite) NSInteger count;
-@property (nonatomic) NSUInteger capacity;
-@property (nonatomic) CCNodeList *tailNode;
-@property (nonatomic) CCNodeList *headNode;
+@property (assign, nonatomic, readwrite) NSInteger count;
+@property (assign, nonatomic) NSUInteger capacity;
+@property (strong, nonatomic) CCNodeList *tailNode;
+@property (strong, nonatomic) CCNodeList *headNode;
 
 @end
 
@@ -29,8 +29,7 @@ NSUInteger const kCCListDefaultCapacity = 100;
 }
 
 - (instancetype)initWithCapacity:(NSInteger)capacity {
-    self = [super init];
-    if (self) {
+    if (self = [super init]) {
         self.capacity = capacity;
     }
     return self;
@@ -98,8 +97,8 @@ NSUInteger const kCCListDefaultCapacity = 100;
         if ([removedNode.object isEqualTo:object]) {
             previousNode.nextNode = removedNode.nextNode;
             removedNode = previousNode.nextNode;
-            self.count--;
             counter--;
+            self.count--;
         } else {
             previousNode = removedNode;
             removedNode = removedNode.nextNode;
@@ -109,7 +108,7 @@ NSUInteger const kCCListDefaultCapacity = 100;
 }
 
 - (void)removeObjectAtIndex:(NSInteger)index {
-    if (index > self.count) {
+    if (index < 0 || index > self.count) {
         NSLog(@"Not Allowed Index");
     } else {
         CCNodeList *removedNode = self.headNode;
@@ -117,7 +116,7 @@ NSUInteger const kCCListDefaultCapacity = 100;
         if (index == 0) {
             self.headNode = self.headNode.nextNode;
         } else {
-            for (NSUInteger counter = 1; counter <= index; counter++) {
+            for (NSUInteger counter = 1; counter < index; counter++) {
                 previousNode = removedNode;
                 removedNode = removedNode.nextNode;
             }
