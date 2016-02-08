@@ -29,7 +29,7 @@
 
 #pragma mark - peak methods
 
-- (id) peakHeadObject;
-- (id) peakTailObject;
+- (id)peakHeadObject;
+- (id)peakTailObject;
 
 @end

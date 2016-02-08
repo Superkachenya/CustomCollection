@@ -91,12 +91,12 @@ int main(int argc, const char * argv[]) {
         [listTest addObject:testObj5];
         [listTest addObject:testObj];
         [listTest addObject:testObj5];
-        [listTest addObject:testObj];
         [listTest addObject:testObj5];
-        [listTest addObject:testObj];
+        [listTest addObject:testObj2];
+        [listTest addObject:testObj3];
         [listTest addObject:testObj5];
-        [listTest addObject:testObj];
         [listTest addObject:testObj5];
+        [listTest addObject:testObj4];
 
         NSLog(@"%@ 1", [listTest objectAtIndex:0]);
         NSLog(@"%@ 2", [listTest objectAtIndex:1]);

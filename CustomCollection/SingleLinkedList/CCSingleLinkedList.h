@@ -30,6 +30,4 @@
 
 - (id)objectAtIndex:(NSInteger)index;
 
-
-
 @end

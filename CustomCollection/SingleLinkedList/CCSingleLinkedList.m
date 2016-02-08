@@ -44,10 +44,8 @@ NSUInteger const kCCListDefaultCapacity = 100;
     } else {
         CCNodeList *currentNode = [CCNodeList new];
         currentNode.object = object;
-        if(!self.count) {
-            self.headNode = self.tailNode = currentNode;
-        } else if (!self.headNode.nextNode){
-            self.headNode.nextNode = currentNode;
+        if (!self.count) {
+            self.headNode = currentNode;
         } else {
             self.tailNode.nextNode = currentNode;
         }
@@ -59,7 +57,7 @@ NSUInteger const kCCListDefaultCapacity = 100;
 - (void)insertObject:(id)object atIndex:(NSInteger)index {
     if (self.count >= self.capacity) {
         NSLog(@"ALARM!!! You're beyond bounds");
-    } else if (index > self.count) {
+    } else if (index < 0 || index >= self.count) {
         NSLog(@"Index Not Allowed");
     } else {
         CCNodeList *addedNode = [CCNodeList new];
@@ -86,25 +84,28 @@ NSUInteger const kCCListDefaultCapacity = 100;
 #pragma mark - Remove methods
 
 - (void)removeObject:(id)object {
-    CCNodeList *comparativeNode = [CCNodeList new];
-    comparativeNode.object = object;
-    CCNodeList *removedNode = self.headNode;
-    CCNodeList *previousNode;
+    CCNodeList *removedNode = nil;
+    CCNodeList *previousNode = nil;
     for (NSUInteger counter = 0; counter <= self.count; counter++) {
-        if ([comparativeNode.object isEqualTo:removedNode.object]) {
-            if ([self.headNode.object isEqualTo:comparativeNode.object]) {
-                self.headNode = self.headNode.nextNode;
-                self.count--;
-            }
-            previousNode = comparativeNode.nextNode;
-            removedNode = removedNode.nextNode;
-            previousNode.nextNode = removedNode;
-            comparativeNode.nextNode = previousNode;
+        if ([self.headNode.object isEqualTo:object]) {
+            self.headNode = self.headNode.nextNode;
             self.count--;
-        }
-        comparativeNode.nextNode = removedNode;
-        removedNode = removedNode.nextNode;
+        } else  break;
     }
+    previousNode = self.headNode;
+    removedNode = previousNode.nextNode;
+    for (NSUInteger counter = 0; counter <= self.count; counter++) {
+        if ([removedNode.object isEqualTo:object]) {
+            previousNode.nextNode = removedNode.nextNode;
+            removedNode = previousNode.nextNode;
+            self.count--;
+            counter--;
+        } else {
+            previousNode = removedNode;
+            removedNode = removedNode.nextNode;
+        }
+    }
+    
 }
 
 - (void)removeObjectAtIndex:(NSInteger)index {

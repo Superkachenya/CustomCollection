@@ -114,14 +114,14 @@ NSString *const kCCDequeCountKey = @"CCDequeCountKey";
 #pragma mark - peak methods
 
 - (id)peakHeadObject {
-    if(!self.headNode) {
+    if (!self.headNode) {
         NSLog(@"There's no elements in deque");
     }
     return self.headNode.object;
 }
 
 - (id)peakTailObject {
-    if(!self.tailNode) {
+    if (!self.tailNode) {
         NSLog(@"There's no elements in deque");
     }
     return self.tailNode.object;
