@@ -17,6 +17,12 @@
     return self;
 }
 
+-(void)setObject:(id)object {
+    [object retain];
+    [_object release];
+    _object = object;
+}
+
 -(void)setNextNode:(CCNonARCDoublyNode *)nextNode {
     [nextNode retain];
     [_nextNode release];
