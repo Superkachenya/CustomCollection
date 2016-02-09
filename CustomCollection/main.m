@@ -44,8 +44,6 @@ int main(int argc, const char * argv[]) {
         //        NSLog(@"%@ HEAD", [theVeryNewTestDeque peakHeadObject]);
         //        NSLog(@"%@ TAIL", [theVeryNewTestDeque peakTailObject]);
         
-        
-        
         CCNonARCDeque *nonARCDequeTest = [CCNonARCDeque new];
         
         NSLog(@"FIRST PUSH\n\n");
@@ -57,24 +55,25 @@ int main(int argc, const char * argv[]) {
         [nonARCDequeTest pushBack:testObj2];
         NSLog(@"%@ HEAD", [nonARCDequeTest peakHeadObject]);
         NSLog(@"%@ TAIL", [nonARCDequeTest peakTailObject]);
-        //        NSLog(@"%li NON ARC", [nonARCDequeTest retainCount]);
+        NSLog(@"%li NON ARC", [nonARCDequeTest retainCount]);
         
         NSLog(@"THIRD PUSH\n\n");
         [nonARCDequeTest pushFront:testObj3];
         NSLog(@"%@ HEAD", [nonARCDequeTest peakHeadObject]);
         NSLog(@"%@ TAIL", [nonARCDequeTest peakTailObject]);
-        //        NSLog(@"%li NON ARC", [nonARCDequeTest retainCount]);
+        NSLog(@"%li NON ARC", [nonARCDequeTest retainCount]);
         
-        NSLog(@"%@ FIRST POPPED\n\n", [nonARCDequeTest popBack]);
-        //        NSLog(@"%@ HEAD", [nonARCDequeTest peakHeadObject]);
-        //        NSLog(@"%@ TAIL", [nonARCDequeTest peakTailObject]);
-        //        NSLog(@"%li NON ARC", [nonARCDequeTest retainCount]);
-        //
-        NSLog(@"%@ SECOND POPPED\n\n", [nonARCDequeTest popFront]);
-        //        NSLog(@"%@ HEAD", [nonARCDequeTest peakHeadObject]);
-        //        NSLog(@"%@ TAIL", [nonARCDequeTest peakTailObject]);
-        //        NSLog(@"%li NON ARC", [nonARCDequeTest retainCount]);
-        //
+        NSLog(@"%@ FIRST POPPED BACK\n\n", [nonARCDequeTest popBack]);
+        NSLog(@"%@ HEAD", [nonARCDequeTest peakHeadObject]);
+        NSLog(@"%@ TAIL", [nonARCDequeTest peakTailObject]);
+        NSLog(@"%li NON ARC", [nonARCDequeTest retainCount]);
+        
+        NSLog(@"%@ SECOND POPPED FRONT\n\n", [nonARCDequeTest popFront]);
+        NSLog(@"%@ HEAD", [nonARCDequeTest peakHeadObject]);
+        NSLog(@"%@ TAIL", [nonARCDequeTest peakTailObject]);
+        NSLog(@"%li NON ARC", [nonARCDequeTest retainCount]);
+        
+        NSLog(@"%@ THIRD POPPED FRONT\n\n", [nonARCDequeTest popFront]);
         NSLog(@"%@ HEAD", [nonARCDequeTest peakHeadObject]);
         NSLog(@"%@ TAIL", [nonARCDequeTest peakTailObject]);
         [nonARCDequeTest release];

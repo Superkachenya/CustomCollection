@@ -66,7 +66,7 @@
 
 - (id)popBack {
     if (self.count) {
-        id poppedNode = self.headNode.object;
+        id poppedNode = self.tailNode.object;
         if ([self.tailNode isEqualTo:self.headNode]) {
             self.headNode = nil;
         }
