@@ -12,33 +12,9 @@
 
 - (instancetype)initWithObject:(id)object {
     if (self = [super init]) {
-        self.object = object;
+        _object = object;
     }
     return self;
-}
-
--(void)setNextNode:(CCNonARCDoublyNode *)nextNode {
-    [nextNode retain];
-    [_nextNode release];
-    _nextNode = nextNode;
-}
-
-#pragma mark - Debug methods
-
-- (void)dealloc {
-    NSLog(@"BYE BYE NODE %li", [self retainCount]);
-    [super dealloc];
-}
-
-- (instancetype)retain {
-    self = [super retain];
-    NSLog(@"%li NODE LINK COUNT RETAIN", [self retainCount]);
-    return self;
-}
-
-- (oneway void)release {
-    NSLog(@"%li NODE LINK COUNT RELEASE", [self retainCount]);
-    [super release];
 }
 
 @end

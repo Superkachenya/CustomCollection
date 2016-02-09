@@ -10,7 +10,7 @@
 
 @interface CCNonARCDeque : NSObject
 
-@property (nonatomic, readonly) NSInteger count;
+@property (assign, nonatomic, readonly) NSInteger count;
 
 #pragma mark - push methods
 

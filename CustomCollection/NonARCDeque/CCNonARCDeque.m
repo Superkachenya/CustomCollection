@@ -11,7 +11,7 @@
 
 @interface CCNonARCDeque ()
 
-@property (nonatomic, readwrite) NSInteger count;
+@property (assign, nonatomic, readwrite) NSInteger count;
 @property (retain, nonatomic) CCNonARCDoublyNode *headNode;
 @property (retain, nonatomic) CCNonARCDoublyNode *tailNode;
 
@@ -31,7 +31,6 @@
         self.headNode = currentNode;
     }
     [currentNode release];
-    [self retain];
     self.count++;
 }
 
@@ -45,46 +44,39 @@
         self.tailNode = currentNode;
     }
     [currentNode release];
-    [self retain];
     self.count++;
 }
 
 #pragma mark - pop methods
 
 - (id)popFront {
-    id poppedNode = nil;
-    if (!self.count) {
-        NSLog(@"There's no elements to pop");
-        [self release];
-    } else {
+    if (self.count) {
+        id poppedNode = self.headNode.object;
         if ([self.headNode isEqualTo:self.tailNode]) {
             self.tailNode = nil;
         }
-        poppedNode = self.headNode.object;
         self.headNode = self.headNode.previousNode;
         self.headNode.nextNode = nil;
-        [self release];
         self.count--;
+        return poppedNode;
     }
-    return poppedNode;
+    NSLog(@"There's no elements to pop");
+    return nil;
 }
 
 - (id)popBack {
-    id poppedNode = nil;
-    if (!self.count) {
-        NSLog(@"There's no elements to pop");
-        [self release];
-    } else {
+    if (self.count) {
+        id poppedNode = self.headNode.object;
         if ([self.tailNode isEqualTo:self.headNode]) {
             self.headNode = nil;
         }
-        poppedNode = self.tailNode.object;
         self.tailNode = self.tailNode.nextNode;
         self.tailNode.previousNode = nil;
-        [self release];
         self.count--;
+        return poppedNode;
     }
-    return poppedNode;
+    NSLog(@"There's no elements to pop");
+    return nil;
 }
 
 #pragma mark - peak methods
@@ -103,21 +95,4 @@
     return self.tailNode.object;
 }
 
-#pragma mark - Debug methods
-
-- (void)dealloc {
-    NSLog(@"BYE BYE Deque");
-    [super dealloc];
-}
-
-- (instancetype)retain {
-    self = [super retain];
-    NSLog(@"%li DEQUE LINK COUNT RETAIN", [self retainCount]);
-    return self;
-}
-
-- (oneway void)release {
-    NSLog(@"%li DEQUE LINK COUNT RELEASE", [self retainCount]);
-    [super release];
-}
 @end
