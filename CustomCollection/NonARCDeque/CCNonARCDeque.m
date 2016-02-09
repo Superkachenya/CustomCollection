@@ -9,11 +9,8 @@
 #import "CCNonARCDeque.h"
 #import "CCNonARCDoublyNode.h"
 
-NSInteger const kCCNonARCDequeDefaultCapacity = 100;
-
 @interface CCNonARCDeque ()
 
-@property (nonatomic) NSUInteger capacity;
 @property (nonatomic, readwrite) NSInteger count;
 @property (retain, nonatomic) CCNonARCDoublyNode *headNode;
 @property (retain, nonatomic) CCNonARCDoublyNode *tailNode;
@@ -22,90 +19,70 @@ NSInteger const kCCNonARCDequeDefaultCapacity = 100;
 
 @implementation CCNonARCDeque
 
-#pragma mark - initializers
-
-- (instancetype)init {
-    return [self initWithCapacity:kCCNonARCDequeDefaultCapacity];
-}
-
-- (instancetype)initWithCapacity:(NSInteger)capacity {
-    if (self = [super init]) {
-        self.capacity = capacity;
-    }
-    return self;
-}
-
 #pragma mark - push methods
 
 - (void)pushFront:(id)object {
-    if (self.count >= self.capacity) {
-        NSLog(@"ALARM!!! You're beyond bounds");
+    CCNonARCDoublyNode *currentNode = [[CCNonARCDoublyNode alloc] initWithObject:object];
+    if (!self.headNode) {
+        self.headNode = self.tailNode = currentNode;
     } else {
-        CCNonARCDoublyNode *currentNode = [CCNonARCDoublyNode new];
-        currentNode.object = object;
-        if (!self.headNode) {
-            self.headNode = self.tailNode = currentNode;
-        } else {
-            self.headNode.nextNode = currentNode;
-            currentNode.previousNode = self.headNode;
-            self.headNode = currentNode;
-        }
-        self.count++;
+        self.headNode.nextNode = currentNode;
+        currentNode.previousNode = self.headNode;
+        self.headNode = currentNode;
     }
+    [currentNode release];
+    [self retain];
+    self.count++;
 }
 
 - (void)pushBack:(id)object {
-    if (self.count >= self.capacity) {
-        NSLog(@"ALARM!!! You're beyond bounds");
+    CCNonARCDoublyNode *currentNode = [[CCNonARCDoublyNode alloc] initWithObject:object];
+    if (!self.tailNode) {
+        self.tailNode = self.headNode = currentNode;
     } else {
-        CCNonARCDoublyNode *currentNode = [CCNonARCDoublyNode new];
-        currentNode.object = object;
-        if (!self.tailNode) {
-            self.tailNode = self.headNode = currentNode;
-        } else {
-            self.tailNode.previousNode = currentNode;
-            currentNode.nextNode = self.tailNode;
-            self.tailNode = currentNode;
-        }
-        self.count++;
-        
+        self.tailNode.previousNode = currentNode;
+        currentNode.nextNode = self.tailNode;
+        self.tailNode = currentNode;
     }
+    [currentNode release];
+    [self retain];
+    self.count++;
 }
 
 #pragma mark - pop methods
 
 - (id)popFront {
-    CCNonARCDoublyNode *poppedNode = nil;
+    id poppedNode = nil;
     if (!self.count) {
         NSLog(@"There's no elements to pop");
     } else {
-        poppedNode = [CCNonARCDoublyNode new];
         if ([self.headNode isEqualTo:self.tailNode]) {
             self.tailNode = nil;
         }
-        poppedNode.object = self.headNode.object;
+        poppedNode = self.headNode.object;
         self.headNode = self.headNode.previousNode;
         self.headNode.nextNode = nil;
+        [self release];
         self.count--;
     }
-    return poppedNode.object;
+    return poppedNode;
 }
 
 - (id)popBack {
-    CCNonARCDoublyNode *poppedNode = nil;
+    id poppedNode = nil;
     if (!self.count) {
         NSLog(@"There's no elements to pop");
     } else {
-        poppedNode = [CCNonARCDoublyNode new];
         if ([self.tailNode isEqualTo:self.headNode]) {
             self.headNode = nil;
         }
-        poppedNode.object = self.tailNode.object;
+        poppedNode = self.tailNode.object;
         self.tailNode = self.tailNode.nextNode;
         self.tailNode.previousNode = nil;
+        [self release];
         self.count--;
     }
-    return poppedNode.object;
+    return poppedNode;
 }
 
 #pragma mark - peak methods

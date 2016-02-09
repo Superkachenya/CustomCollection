@@ -96,6 +96,7 @@ NSString *const kCCDequeCountKey = @"CCDequeCountKey";
             self.tailNode.previousNode = currentNode;
             currentNode.nextNode = self.tailNode;
             self.tailNode = currentNode;
+
         }
         self.count++;
         

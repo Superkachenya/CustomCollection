@@ -10,4 +10,17 @@
 
 @implementation CCNonARCDoublyNode
 
+- (instancetype)initWithObject:(id)object {
+    if (self = [super init]) {
+        self.object = object;
+    }
+    return self;
+}
+
+-(void)setNextNode:(CCNonARCDoublyNode *)nextNode {
+    [nextNode retain];
+    [_nextNode release];
+    _nextNode = nextNode;
+}
+
 @end

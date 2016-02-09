@@ -10,31 +10,71 @@
 #import "CCDeque.h"
 #import "CCSingleLinkedList.h"
 #import "CCNonARCDeque.h"
+#import "CCNonARCDoublyNode.h"
 
 int main(int argc, const char * argv[]) {
     @autoreleasepool {
         
-        NSNumber *testObj = [NSNumber numberWithInt:1];
+        NSNumber *testObj = @1;
         NSNumber *testObj2 = @2;
         NSNumber *testObj3 = @3;
-        NSNumber *testObj4 = @4;
-        NSString *testObj5 = @"A";
         
+//        NSNumber *testObj4 = @4;
+//        NSNumber *testObj5 = @5;
+//        
 //        CCDeque *theVeryNewTestDeque = [[CCDeque alloc] initWithCapacity:10];
 //        
 //        [theVeryNewTestDeque pushFront:testObj];
 //        NSLog(@"%@ HEAD", [theVeryNewTestDeque peakHeadObject]);
 //        NSLog(@"%@ TAIL", [theVeryNewTestDeque peakTailObject]);
-//        NSLog(@"%li ARC", [testObj retainCount]);
+//        [theVeryNewTestDeque pushBack:testObj2];
+//        NSLog(@"%@ HEAD", [theVeryNewTestDeque peakHeadObject]);
+//        NSLog(@"%@ TAIL", [theVeryNewTestDeque peakTailObject]);
+//        [theVeryNewTestDeque pushFront:testObj3];
+//        NSLog(@"%@ HEAD", [theVeryNewTestDeque peakHeadObject]);
+//        NSLog(@"%@ TAIL", [theVeryNewTestDeque peakTailObject]);
+//    
 //        [theVeryNewTestDeque popBack];
-//        NSLog(@"%li ARC", [testObj retainCount]);
+//        NSLog(@"%@ HEAD", [theVeryNewTestDeque peakHeadObject]);
+//        NSLog(@"%@ TAIL", [theVeryNewTestDeque peakTailObject]);
+//        [theVeryNewTestDeque popFront];
+//        NSLog(@"%@ HEAD", [theVeryNewTestDeque peakHeadObject]);
+//        NSLog(@"%@ TAIL", [theVeryNewTestDeque peakTailObject]);
+//        [theVeryNewTestDeque popBack];
+//        NSLog(@"%@ HEAD", [theVeryNewTestDeque peakHeadObject]);
 //        NSLog(@"%@ TAIL", [theVeryNewTestDeque peakTailObject]);
 
 
         
         CCNonARCDeque *nonARCDequeTest = [CCNonARCDeque new];
+        
         [nonARCDequeTest pushFront:testObj];
+        NSLog(@"%@ HEAD", [nonARCDequeTest peakHeadObject]);
+        NSLog(@"%@ TAIL", [nonARCDequeTest peakTailObject]);
+        
+        [nonARCDequeTest pushBack:testObj2];
+        NSLog(@"%@ HEAD", [nonARCDequeTest peakHeadObject]);
+        NSLog(@"%@ TAIL", [nonARCDequeTest peakTailObject]);
         NSLog(@"%li NON ARC", [nonARCDequeTest retainCount]);
+
+        
+        [nonARCDequeTest pushFront:testObj3];
+        NSLog(@"%@ HEAD", [nonARCDequeTest peakHeadObject]);
+        NSLog(@"%@ TAIL", [nonARCDequeTest peakTailObject]);
+        
+        NSLog(@"%@ POPPED", [nonARCDequeTest popBack]);
+        NSLog(@"%@ HEAD", [nonARCDequeTest peakHeadObject]);
+        NSLog(@"%@ TAIL", [nonARCDequeTest peakTailObject]);
+        
+        NSLog(@"%@ POPPED", [nonARCDequeTest popFront]);
+        NSLog(@"%@ HEAD", [nonARCDequeTest peakHeadObject]);
+        NSLog(@"%@ TAIL", [nonARCDequeTest peakTailObject]);
+        
+        NSLog(@"%@ POPPED", [nonARCDequeTest popFront]);
+        NSLog(@"%@ HEAD", [nonARCDequeTest peakHeadObject]);
+        NSLog(@"%@ TAIL", [nonARCDequeTest peakTailObject]);
+        NSLog(@"%li NON ARC", [nonARCDequeTest retainCount]);
+        [nonARCDequeTest release];
         
         
         //                 [theVeryNewTestDeque pushFront:testObj2];
