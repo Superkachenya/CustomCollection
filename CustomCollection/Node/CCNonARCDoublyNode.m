@@ -29,4 +29,9 @@
     _nextNode = nextNode;
 }
 
+-(void)dealloc {
+    NSLog(@"BYE BYE %li", [self retainCount]);
+    [super dealloc];
+}
+
 @end

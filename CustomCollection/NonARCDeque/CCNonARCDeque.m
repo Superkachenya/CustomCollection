@@ -101,4 +101,8 @@
     return self.tailNode.object;
 }
 
+-(void)dealloc {
+    NSLog(@"BYE BYE Deque");
+    [super dealloc];
+}
 @end
