@@ -55,6 +55,7 @@
     id poppedNode = nil;
     if (!self.count) {
         NSLog(@"There's no elements to pop");
+        [self release];
     } else {
         if ([self.headNode isEqualTo:self.tailNode]) {
             self.tailNode = nil;
@@ -72,6 +73,7 @@
     id poppedNode = nil;
     if (!self.count) {
         NSLog(@"There's no elements to pop");
+        [self release];
     } else {
         if ([self.tailNode isEqualTo:self.headNode]) {
             self.headNode = nil;
@@ -101,8 +103,21 @@
     return self.tailNode.object;
 }
 
--(void)dealloc {
+#pragma mark - Debug methods
+
+- (void)dealloc {
     NSLog(@"BYE BYE Deque");
     [super dealloc];
+}
+
+- (instancetype)retain {
+    self = [super retain];
+    NSLog(@"%li DEQUE LINK COUNT RETAIN", [self retainCount]);
+    return self;
+}
+
+- (oneway void)release {
+    NSLog(@"%li DEQUE LINK COUNT RELEASE", [self retainCount]);
+    [super release];
 }
 @end

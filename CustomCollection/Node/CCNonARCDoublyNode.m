@@ -17,21 +17,28 @@
     return self;
 }
 
--(void)setObject:(id)object {
-    [object retain];
-    [_object release];
-    _object = object;
-}
-
 -(void)setNextNode:(CCNonARCDoublyNode *)nextNode {
     [nextNode retain];
     [_nextNode release];
     _nextNode = nextNode;
 }
 
--(void)dealloc {
-    NSLog(@"BYE BYE %li", [self retainCount]);
+#pragma mark - Debug methods
+
+- (void)dealloc {
+    NSLog(@"BYE BYE NODE %li", [self retainCount]);
     [super dealloc];
+}
+
+- (instancetype)retain {
+    self = [super retain];
+    NSLog(@"%li NODE LINK COUNT RETAIN", [self retainCount]);
+    return self;
+}
+
+- (oneway void)release {
+    NSLog(@"%li NODE LINK COUNT RELEASE", [self retainCount]);
+    [super release];
 }
 
 @end
