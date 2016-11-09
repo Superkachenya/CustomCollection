@@ -13,7 +13,7 @@
 		8E56FB981C622F3D00C16A7F /* CCDeque.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E56FB971C622F3D00C16A7F /* CCDeque.m */; };
 		8EA4966E1C6A35B4005B628C /* CCDoublyNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 8EA4966D1C6A35B4005B628C /* CCDoublyNode.m */; };
 		8EA496711C6A35C0005B628C /* CCSinglyNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 8EA496701C6A35C0005B628C /* CCSinglyNode.m */; };
-		8EA496741C6A35CB005B628C /* CCNonARCDoublyNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 8EA496731C6A35CB005B628C /* CCNonARCDoublyNode.m */; };
+		8EA496741C6A35CB005B628C /* CCNonARCDoublyNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 8EA496731C6A35CB005B628C /* CCNonARCDoublyNode.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
